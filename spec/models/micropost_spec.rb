@@ -20,6 +20,26 @@ describe Micropost do
     it { should_not be_valid }
   end
   
+  describe "with blank artist" do
+    before { @micropost.artist = "  " }
+    it { should_not be_valid }
+  end
+  
+  describe "with artist entry too long" do
+    before { @micropost.artist = "a" * 141 }
+    it { should_not be_valid }
+  end
+  
+  describe "with blank track" do
+    before { @micropost.track = "  " }
+    it { should_not be_valid }
+  end
+  
+  describe "with track entry too long" do
+    before { @micropost.track = "a" * 141 }
+    it { should_not be_valid }
+  end
+  
   describe "accessible attributes" do
     it "should not allow access to user_id" do
       expect do

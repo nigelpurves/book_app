@@ -9,4 +9,10 @@ FactoryGirl.define do
       admin true
     end
   end
+  
+  factory :micropost do
+    artist "Radiohead"
+    track "Codex"
+    user
+  end
 end
