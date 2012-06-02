@@ -11,11 +11,20 @@
 	<div class="span8">
 		<% if @user.microposts.any? %>
 	  	<h3>Microposts (<%= @user.microposts.count %>)</h3>
-	    <table>
+	    <table class="micropost">
 				<tr>
-					<td>Artist</td>
-					<td>Track</td>
-					<td>Posted</td>
+					<td class="micropost">
+						<h3>Artist</h3>
+					</td>
+					<td class="micropost">
+						<h3>Track</h3>
+					</td>
+					<td class="miropost">
+						<h3>Posted</h3>
+					</td>
+					<td class="miropost">
+						<h3>iTunes?</h3>
+					</td>
 				</tr>
 				<tr><%= render @microposts %></tr>
 	    <%= will_paginate @microposts %>

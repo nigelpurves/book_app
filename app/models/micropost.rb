@@ -7,4 +7,14 @@ class Micropost < ActiveRecord::Base
   validates :user_id, presence: true
   
   default_scope order: 'microposts.created_at DESC'
+  
+  def itunes_info
+    @info ||=   ITunesSearchAPI.search(
+      :term => "#{artist} #{track}", 
+      :entity=> "musicTrack", 
+      :country => "US", 
+      :media => "music", 
+      :limit => "1"
+    ).first # call .first because this returns an array, by default
+  end
 end
