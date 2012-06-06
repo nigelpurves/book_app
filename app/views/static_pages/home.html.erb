@@ -8,11 +8,11 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-  </div>
-	<div class="row">
 	<div class="span8">
 		<% if current_user.microposts.any? %>
-	  	<h3>Microposts (<%= current_user.microposts.count %>)</h3>
+	  	<br />
+			<h3>Tracks (<%= current_user.microposts.count %>)</h3>
+			<br />
 	    <table class="table table-striped">
 				<tr>
 					<td class="micropost">
