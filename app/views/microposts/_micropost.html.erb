@@ -1,4 +1,3 @@
-
 	<tr>
 		<td><%= micropost.artist %></td>
 		<td><%= micropost.track %></td>
@@ -6,9 +5,9 @@
 		<td class="micropost">
 			<span class="itunes">
 				<% if micropost.itunes_info.present? %>
-					<%= micropost.itunes_info["trackPrice"] %>
+					<%= link_to "Available now", micropost.itunes_info["trackViewUrl"], target: '_blank' %>
 				<% else %>
-					Not Available
+					Tracking it for you!
 				<% end %>
 			</span>
 		</td>

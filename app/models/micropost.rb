@@ -11,8 +11,8 @@ class Micropost < ActiveRecord::Base
   def itunes_info
     @info ||=   ITunesSearchAPI.search(
       :term => "#{artist} #{track}", 
-      :entity=> "musicTrack", 
-      :country => "US", 
+      :entity=> "song", 
+      :country => "GB", 
       :media => "music", 
       :limit => "1"
     ).first # call .first because this returns an array, by default

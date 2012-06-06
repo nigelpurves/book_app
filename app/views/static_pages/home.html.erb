@@ -8,7 +8,32 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-  </div>  
+  </div>
+	<div class="row">
+	<div class="span8">
+		<% if current_user.microposts.any? %>
+	  	<h3>Microposts (<%= current_user.microposts.count %>)</h3>
+	    <table class="table table-striped">
+				<tr>
+					<td class="micropost">
+						<h3>Artist</h3>
+					</td>
+					<td class="micropost">
+						<h3>Track</h3>
+					</td>
+					<td class="miropost">
+						<h3>Posted</h3>
+					</td>
+					<td class="miropost">
+						<h3>iTunes?</h3>
+					</td>
+				</tr>
+				<tr><%= render @microposts %></tr>
+	    </table>
+		<%= will_paginate @microposts %>
+	  <% end %>
+	</div>
+	</div>
 <% else %>
   <div class="center hero-unit">
     <h1>Welcome to the Music App</h1>
