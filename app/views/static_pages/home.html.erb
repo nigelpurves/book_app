@@ -37,18 +37,25 @@
 <% else %>
   <div class="center hero-unit">
     <h1>Welcome to Qusic</h1>
-
     <h2>
       Keeping track of your favourite tracks!
     </h2>
-		<br />
+		<br /><!--REMOVE THIS WITH MARGIN-TOP-->
+		<div class="row welcome-icons">
+			<div class="span3 offset1">
+				<%= image_tag('headphones.svg') %>
+			</div>
+			<div class="offset5">
+				<%= image_tag('mail.svg') %>
+			</div>
+		</div>
 		<div class="row welcome-explain">
 			<div class="span5">
 				<h3>1. Tell us what song you've found</h3>
 			</div>
 		
 			<div class="span5">
-				<h3>2. We'll tell you when you can buy it</h3>
+				<h3>2. We'll email you when you can buy it</h3>
 			</div>
 		</div>
 		<div class="row"></div>
