@@ -36,17 +36,27 @@
 	</div>
 <% else %>
   <div class="center hero-unit">
-    <h1>Welcome to the Music App</h1>
+    <h1>Welcome to Qusic</h1>
 
     <h2>
-      This is the home page for the
-      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-      sample application.
+      Keeping track of your favourite tracks!
     </h2>
-
-    <%= link_to "Sign up now!", signup_path, 
-                                class: "btn btn-large btn-primary" %>
-  </div>
-
-  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+		<br />
+		<div class="row welcome-explain">
+			<div class="span5">
+				<h3>1. Tell us what song you've found</h3>
+			</div>
+		
+			<div class="span5">
+				<h3>2. We'll tell you when you can buy it</h3>
+			</div>
+		</div>
+		<div class="row"></div>
+		<div class="row">
+			<div>
+				<%= link_to "Sign up now!", signup_path, 
+                              	class: "btn btn-large btn-primary" %>
+			</div>
+		</div>
+	</div>
 <% end %>
