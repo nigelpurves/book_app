@@ -8,7 +8,7 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-	<div class="span8">
+	<div class="span8 hometracks">
 		<% if current_user.microposts.any? %>
 	  	<br />
 			<h3>Tracks (<%= current_user.microposts.count %>)</h3>
