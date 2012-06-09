@@ -12,8 +12,10 @@
 			</span>
 		</td>
 		<td>
-			<%= Micropost.where(artist: micropost.artist, track: micropost.track).count %>
-
+			You're the <%= Micropost.where(artist: micropost.artist, track: micropost.track).all(conditions: ["created_at <= ?", micropost.created_at]).count.ordinalize %>
+			 of
+			<%= Micropost.where(artist: micropost.artist, track: micropost.track).count %> 
+			people to track this song!
 		</td>
 		<% if current_user?(micropost.user) %>
 		    <td><%= link_to "delete", micropost, method:  :delete,
