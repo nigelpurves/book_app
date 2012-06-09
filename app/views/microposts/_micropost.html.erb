@@ -7,9 +7,13 @@
 				<% if micropost.itunes_info.present? %>
 					<%= link_to "Available now", micropost.itunes_info["trackViewUrl"], target: '_blank' %>
 				<% else %>
-					Tracking it for you!
+					Tracked!
 				<% end %>
 			</span>
+		</td>
+		<td>
+			<%= Micropost.where(artist: micropost.artist, track: micropost.track).count %>
+
 		</td>
 		<% if current_user?(micropost.user) %>
 		    <td><%= link_to "delete", micropost, method:  :delete,
