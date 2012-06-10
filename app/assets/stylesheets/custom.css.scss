@@ -217,11 +217,29 @@ aside {
   }
 }
 
+.delete {
+	table: unstyled;
+}
+
 hometracks {
 	margin-top: 30px;
 }
 
+.userinfo {
+	margin-bottom: 15px;
+}
+
 /* Welcome Page */
+
+.hero-unit {
+	h2 {
+	margin-bottom: 50px;
+	}
+}
+
+.welcome-icons {
+	margin-bottom: 20px;
+}
 
 .welcome-explain {
 	margin-bottom: 40px;

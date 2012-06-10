@@ -5,17 +5,21 @@
 		<td class="micropost">
 			<span class="itunes">
 				<% if micropost.itunes_info.present? %>
-					<%= link_to "Available now", micropost.itunes_info["trackViewUrl"], target: '_blank' %>
+					<%= link_to "Available now!", micropost.itunes_info["trackViewUrl"], target: '_blank' %>
 				<% else %>
-					Tracked!
+					Tracked
 				<% end %>
 			</span>
 		</td>
 		<td>
-			You're the <%= Micropost.where(artist: micropost.artist, track: micropost.track).all(conditions: ["created_at <= ?", micropost.created_at]).count.ordinalize %>
-			 of
-			<%= Micropost.where(artist: micropost.artist, track: micropost.track).count %> 
-			people to track this song!
+			<% if Micropost.where(artist: micropost.artist, track: micropost.track).count == Micropost.where(artist: micropost.artist, track: micropost.track).all(conditions: ["created_at <= ?", micropost.created_at]).count %>
+				You're the <%= Micropost.where(artist: micropost.artist, track: micropost.track).all(conditions: ["created_at <= ?", micropost.created_at]).count.ordinalize %> tracker of this song!
+			<% else %> 
+				You were the <%= Micropost.where(artist: micropost.artist, track: micropost.track).all(conditions: ["created_at <= ?", micropost.created_at]).count.ordinalize %>
+				of
+				<%= Micropost.where(artist: micropost.artist, track: micropost.track).count %> 
+				trackers!
+			<% end %>
 		</td>
 		<% if current_user?(micropost.user) %>
 		    <td><%= link_to "delete", micropost, method:  :delete,

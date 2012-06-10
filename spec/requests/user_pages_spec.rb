@@ -73,8 +73,8 @@ describe "User pages" do
   describe "signup page" do
     before { visit signup_path }
     
-    it { should have_selector('h1',     text: 'Sign up') }
-    it { should have_selector('title',  text: full_title('Sign up')) }
+    it { should have_selector('h1',     text: 'Get started') }
+    it { should have_selector('title',  text: full_title('Get started')) }
   end
   
   describe "signup" do
@@ -105,7 +105,7 @@ describe "User pages" do
         before { click_button submit }
         let(:user) { User.find_by_email('user@example.com') }
 
-        it { should have_selector('title', text: user.name) }
+        it { should have_selector('title', text: 'Qusic') }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
         it { should have_link('Sign out') }
       end
