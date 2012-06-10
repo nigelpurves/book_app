@@ -1,6 +1,9 @@
 class Micropost < ActiveRecord::Base
+  require 'spotify'
+
   attr_accessible :artist, :track
   belongs_to :user
+
   
   validates :artist,  presence: true, length: { maximum: 140 }
   validates :track,   presence: true, length: { maximum: 140 }
@@ -16,5 +19,11 @@ class Micropost < ActiveRecord::Base
       :media => "music", 
       :limit => "1"
     ).first # call .first because this returns an array, by default
+  end
+  
+  def spotify_sinfo
+    @sinfo ||= Spotify.search_track(
+      "#{artist} #{track}"
+    )
   end
 end

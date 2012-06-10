@@ -10,6 +10,9 @@
 					Tracked
 				<% end %>
 			</span>
+			<span class="itunes">
+				<%= micropost.spotify_sinfo %>
+			</span>
 		</td>
 		<td>
 			<% if Micropost.where(artist: micropost.artist, track: micropost.track).count == Micropost.where(artist: micropost.artist, track: micropost.track).all(conditions: ["created_at <= ?", micropost.created_at]).count %>
