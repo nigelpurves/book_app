@@ -13,11 +13,11 @@ describe "MicropostPages" do
     describe "with invalid information" do
       
       it "should not create a micropost" do
-        expect { click_button "Post" }.should_not change(Micropost, :count)
+        expect { click_button "Track this!" }.should_not change(Micropost, :count)
       end
       
       describe "error messages" do
-        before { click_button "Post" }
+        before { click_button "Track this!" }
         it { should have_content('error') }
       end
     end
@@ -27,7 +27,7 @@ describe "MicropostPages" do
       before { fill_in 'micropost_artist', with: "Lorem Ipsum" }
       before { fill_in 'micropost_track', with: "Lorem Ipsum" }
       it "should create a micropost" do
-        expect { click_button "Post" }.should change(Micropost, :count).by(1)
+        expect { click_button "Track this!" }.should change(Micropost, :count).by(1)
       end
     end
   end
