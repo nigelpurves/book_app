@@ -11,7 +11,11 @@
 				<% end %>
 			</span>
 			<span class="itunes">
-				<%= micropost.spotify_sinfo %>
+				<% if micropost.spotify_sinfo.present? %>
+					<%= micropost.spotify_sinfo.href %>
+				<% else %>
+					Tracked
+				<% end %>
 			</span>
 		</td>
 		<td>

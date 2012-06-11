@@ -24,6 +24,6 @@ class Micropost < ActiveRecord::Base
   def spotify_sinfo
     @sinfo ||= Spotify.search_track(
       "#{artist} #{track}"
-    )
+    ).try(:first)
   end
 end
