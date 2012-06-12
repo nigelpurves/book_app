@@ -5,14 +5,14 @@
 		<td class="micropost">
 			<span class="itunes">
 				<% if micropost.itunes_info.present? %>
-					<%= link_to "Available now!", micropost.itunes_info["trackViewUrl"], target: '_blank' %>
+					<%= link_to "On iTunes!", micropost.itunes_info["trackViewUrl"], target: '_blank' %>
 				<% else %>
 					Tracked
 				<% end %>
 			</span>
 			<span class="itunes">
 				<% if micropost.spotify_sinfo.present? %>
-					<%= micropost.spotify_sinfo.href %>
+					<%= link_to "On Spotify!", micropost.spotify_sinfo.href.split("track:")[1].prepend("http://open.spotify.com/track/"), target: '_blank' %>
 				<% else %>
 					Tracked
 				<% end %>
