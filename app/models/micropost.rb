@@ -18,6 +18,7 @@ class Micropost < ActiveRecord::Base
       :media => "music", 
       :limit => "1"
     ).first # call .first because this returns an array, by default
+    # AvailableMailer.song_available(@user).deliver
   end
   
   def spotify_sinfo
