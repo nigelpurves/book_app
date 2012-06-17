@@ -31,8 +31,6 @@ ActiveRecord::Schema.define(:version => 20120617170841) do
     t.string   "itunes_link"
   end
 
-  add_index "tracks", ["created_at"], :name => "index_tracks_on_created_at"
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"

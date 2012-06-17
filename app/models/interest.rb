@@ -6,8 +6,6 @@ class Interest < ActiveRecord::Base
 
   attr_accessible :track_attributes
 
-  default_scope order: 'interests.created_at DESC'
-
   # validates :track_id, presence: true
   # validates :user_id, presence: true
 

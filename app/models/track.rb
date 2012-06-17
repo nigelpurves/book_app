@@ -8,8 +8,6 @@ class Track < ActiveRecord::Base
   validates :artist,  presence: true, length: { maximum: 140 }
   validates :name,   presence: true, length: { maximum: 140 }
 
-  default_scope order: 'tracks.created_at DESC'
-
   before_create :lookup_links
 
   def lookup_links
