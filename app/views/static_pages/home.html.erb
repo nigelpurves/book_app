@@ -1,71 +1,28 @@
-<% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
-      <section class="userinfo">
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/micropost_form' %>
-      </section>
-    </aside>
-	</div>
-	<div class="row">
-	<div class="span12 hometracks">
-		<% if current_user.microposts.any? %>
-	  	<br />
-			<h3>Tracks (<%= current_user.microposts.count %>)</h3>
-			<br />
-	    <table class="table table-striped">
-				<tr>
-					<td class="micropost">
-						<h3>Artist</h3>
-					</td>
-					<td class="micropost">
-						<h3>Track</h3>
-					</td>
-					<td class="miropost">
-						<h3>Posted</h3>
-					</td>
-					<td class="miropost">
-						<h3>Availability</h3>
-					</td>
-					<td class="miropost">
-						<h3>Who else is tracking this?</h3>
-					</td>
-				</tr>
-				<tr><%= render @microposts %></tr>
-	    </table>
-		<%= will_paginate @microposts %>
-	  <% end %>
-	</div>
-	</div>
-<% else %>
-  <div class="center hero-unit">
-    <h1>Welcome to Qusic</h1>
-    <h2>
-      Keeping track of your favourite tracks!
-    </h2>
-		<div class="row-fluid welcome-icons">
-			<div class="span6 center headphones">
-				<%= image_tag('headphones_2.svg') %>
-			</div>
-			<div class="span6 center">
-				<%= image_tag('mail.svg') %>
-			</div>
+<div class="center hero-unit">
+  <h1>Welcome to Qusic</h1>
+  <h2>
+    Keeping track of your favourite tracks!
+  </h2>
+	<div class="row-fluid welcome-icons">
+		<div class="span6 center headphones">
+			<%= image_tag('headphones_2.svg') %>
 		</div>
-		<div class="row-fluid welcome-explain">
-			<div class="span6 center">
-				<h3>Tell us what song you've found</h3>
-			</div>
-			<div class="span6 center">
-				<h3>We'll email when you can buy it</h3>
-			</div>
-		</div>
-		<div class="row-fluid">
-			<div>
-				<%= link_to "Get started!", signup_path, 
-                              	class: "btn btn-large btn-primary" %>
-			</div>
+		<div class="span6 center">
+			<%= image_tag('mail.svg') %>
 		</div>
 	</div>
-<% end %>
+	<div class="row-fluid welcome-explain">
+		<div class="span6 center">
+			<h3>Tell us what song you've found</h3>
+		</div>
+		<div class="span6 center">
+			<h3>We'll email when you can buy it</h3>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div>
+			<%= link_to "Get started!", signup_path,
+                            	class: "btn btn-large btn-primary" %>
+		</div>
+	</div>
+</div>

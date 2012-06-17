@@ -1,8 +1,0 @@
-<%= form_for(@micropost) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-	<div class="field">
-    <%= f.text_field :artist, placeholder: "Which artist should we track...?" %>
-		<%= f.text_field :track, placeholder: "Which track should we track...?" %>
-	</div>
-  <%= f.submit "Track this!", class: "btn btn-large btn-primary" %>
-<% end %>

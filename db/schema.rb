@@ -11,17 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601155143) do
+ActiveRecord::Schema.define(:version => 20120617170841) do
 
-  create_table "microposts", :force => true do |t|
-    t.string   "artist"
-    t.string   "track"
+  create_table "interests", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "track_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+  add_index "interests", ["user_id", "track_id"], :name => "index_interests_on_user_id_and_track_id"
+
+  create_table "tracks", :force => true do |t|
+    t.string   "artist"
+    t.string   "name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "spotify_link"
+    t.string   "itunes_link"
+  end
+
+  add_index "tracks", ["created_at"], :name => "index_tracks_on_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "name"

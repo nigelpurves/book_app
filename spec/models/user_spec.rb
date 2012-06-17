@@ -11,7 +11,7 @@ describe User do
   
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
-  it { should respond_to(:microposts) }
+  it { should respond_to(:tracks) }
   
   it { should be_valid }
   it { should_not be_admin }
@@ -119,25 +119,25 @@ describe User do
     its(:remember_token) { should_not be_blank }
   end
   
-  describe "micropost associations" do
+  describe "track associations" do
     
     before { @user.save }
-    let!(:older_micropost) do
-      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    let!(:older_track) do
+      FactoryGirl.create(:track, user: @user, created_at: 1.day.ago)
     end
-    let!(:newer_micropost) do
-      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
-    end
-    
-    it "should have the right microposts in the right order" do
-      @user.microposts.should == [newer_micropost, older_micropost]
+    let!(:newer_track) do
+      FactoryGirl.create(:track, user: @user, created_at: 1.hour.ago)
     end
     
-    it "should destroy associated microposts" do
-      microposts = @user.microposts
+    it "should have the right tracks in the right order" do
+      @user.tracks.should == [newer_track, older_track]
+    end
+    
+    it "should destroy associated tracks" do
+      tracks = @user.tracks
       @user.destroy
-      microposts.each do |micropost|
-        Micropost.find_by_id(micropost.id).should be_nil
+      tracks.each do |track|
+        Track.find_by_id(track.id).should be_nil
       end
     end
   end

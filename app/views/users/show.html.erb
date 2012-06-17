@@ -1,19 +1,52 @@
 <% provide(:title, @user.name) %>
+
 <div class="row">
   <aside class="span4">
+    <section class="userinfo">
+      <%= render 'shared/user_info' %>
+    </section>
     <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
+      <%= render 'shared/track_form' %>
     </section>
   </aside>
 </div>
+<div class="row">
+	<div class="span12 hometracks">
+		<% if current_user.tracks.any? %>
+	  	<br />
+			<h3>Tracks (<%= current_user.tracks.count %>)</h3>
+			<br />
+	    <table class="table table-striped">
+				<tr>
+					<td class="track">
+						<h3>Artist</h3>
+					</td>
+					<td class="track">
+						<h3>Track</h3>
+					</td>
+					<td class="miropost">
+						<h3>Posted</h3>
+					</td>
+					<td class="miropost">
+						<h3>Availability</h3>
+					</td>
+					<td class="miropost">
+						<h3>Who else is tracking this?</h3>
+					</td>
+				</tr>
+				<tr><%= render @interests %></tr>
+	    </table>
+		<%= will_paginate @interests %>
+	  <% end %>
+	</div>
+</div>
+
+
 <div class="row playerstitle">
 	<h3>Where should we track your tracks?</h3>
 	<div class="row">
 		<form class="form-inline playerschecks">
-			<label class="checkbox iTunes">
+			<label class="checkbox iTunes">`
 				<input type="checkbox">iTunes</input>
 			</label>
 			<label class="checkbox Spotify">
