@@ -5,10 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @interest = current_user.interests.build
+    @interest = @user.interests.build
     @interest.build_track
-
-    @interests = current_user.interests.paginate(page: params[:page])
+    @interests = @user.interests.paginate(page: params[:page])
   end
 
   def new

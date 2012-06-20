@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-
+<% if signed_in? %>
 <div class="row">
   <aside class="span4">
     <section class="userinfo">
@@ -12,9 +12,9 @@
 </div>
 <div class="row">
 	<div class="span12 hometracks">
-		<% if current_user.tracks.any? %>
+		<% if @user.tracks.any? %>
 	  	<br />
-			<h3>Tracks (<%= current_user.tracks.count %>)</h3>
+			<h3>Tracks (<%= @user.tracks.count %>)</h3>
 			<br />
 	    <table class="table table-striped">
 				<tr>
@@ -40,3 +40,4 @@
 	  <% end %>
 	</div>
 </div>
+<% end %>

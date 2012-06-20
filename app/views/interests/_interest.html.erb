@@ -26,4 +26,9 @@
 			of <%= track.interests.count %> trackers!
 		<% end %>
 	</td>
+	<td>
+	<% if current_user?(@interest.user) %>
+		<%= link_to "delete", current_user, method: :delete, data: { confirm: "Are you sure?" }, title: interest %>
+	<% end %>
+	</td>
 </tr>
