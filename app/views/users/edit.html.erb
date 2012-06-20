@@ -2,8 +2,16 @@
 <h1>Update your profile</h1>
 
 <div class="row">
-  <div class="span6 offset3">
-  <%= form_for(@user) do |f| %>
+	<div class="span2 offset1">
+  	<%= gravatar_for @user %>
+  	<a href="http://gravatar.com/emails">Change profile image</a>
+	</div>
+</div>
+<div class="row account_details">
+
+  <div class="span6 offset1">
+		<h3>Account details</h3>
+  	<%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name %>
@@ -19,9 +27,20 @@
       <%= f.password_field :password_confirmation %>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-   <% end %>
-
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
+   	<% end %>
   </div>
+</div>
+<div class="row playerstitle">
+	
+	<div class="span9 offset1">
+		<h3>Where should we track your tracks?</h3>
+		<form class="form-inline playerschecks">
+			<label class="checkbox iTunes">`
+				<input type="checkbox">iTunes</input>
+			</label>
+			<label class="checkbox Spotify">
+				<input type="checkbox">Spotify</input>
+			</label>
+		</form>
+	</div>
 </div>

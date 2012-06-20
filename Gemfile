@@ -11,6 +11,8 @@ gem 'itunes-search-api'
 gem 'spotify-metadata'
 gem 'meta-spotify'
 gem 'heroku'
+gem 'multi_json', '1.0.3'
+gem 'nestling', '0.1.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
