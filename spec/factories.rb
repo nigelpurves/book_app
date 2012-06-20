@@ -12,7 +12,11 @@ FactoryGirl.define do
   
   factory :track do
     artist "Radiohead"
-    track "Codex"
+    name "Codex"
+  end
+  
+  factory :interest do
+    track_id { |i| "1+#{n}" }
     user
   end
 end

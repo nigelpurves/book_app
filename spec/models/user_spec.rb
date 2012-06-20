@@ -11,6 +11,7 @@ describe User do
   
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:interests) }
   it { should respond_to(:tracks) }
   
   it { should be_valid }
@@ -122,15 +123,15 @@ describe User do
   describe "track associations" do
     
     before { @user.save }
-    let!(:older_track) do
-      FactoryGirl.create(:track, user: @user, created_at: 1.day.ago)
+    let!(:older_interest) do
+      FactoryGirl.create(:interest, user: @user, created_at: 1.day.ago)
     end
     let!(:newer_track) do
-      FactoryGirl.create(:track, user: @user, created_at: 1.hour.ago)
+      FactoryGirl.create(:interest, user: @user, created_at: 1.hour.ago)
     end
     
     it "should have the right tracks in the right order" do
-      @user.tracks.should == [newer_track, older_track]
+      @user.interests.should == [newer_interest, older_interest]
     end
     
     it "should destroy associated tracks" do

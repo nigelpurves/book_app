@@ -6,8 +6,8 @@ class Interest < ActiveRecord::Base
 
   attr_accessible :track_attributes
 
-  # validates :track_id, presence: true
-  # validates :user_id, presence: true
+  validates :track_id, presence: true
+  validates :user_id, presence: true
 
   def position
     self.track.interests.index(self) + 1

@@ -7,10 +7,10 @@ class TracksController < ApplicationController
     @track = current_user.tracks.build(params[:track])
     if @track.save
       flash[:success] = "Tracked!"
-      redirect_to root_path
     else
-      render 'static_pages/home'
+      flash[:error] = track.errors.full_messages
     end
+    redirect_to root_path
   end
 
   def destroy

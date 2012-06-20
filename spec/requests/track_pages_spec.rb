@@ -25,7 +25,7 @@ describe "TrackPages" do
     describe "with valid information" do
       
       before { fill_in 'track_artist', with: "Lorem Ipsum" }
-      before { fill_in 'track_track', with: "Lorem Ipsum" }
+      before { fill_in 'track_name', with: "Lorem Ipsum" }
       it "should create a track" do
         expect { click_button "Track this!" }.should change(Track, :count).by(1)
       end

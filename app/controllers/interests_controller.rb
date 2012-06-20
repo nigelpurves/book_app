@@ -9,19 +9,19 @@ class InterestsController < ApplicationController
     else
       flash[:error] = interest.errors.full_messages
     end
-    redirect_to current_user
+    redirect_to root_path
   end
   
   def destroy
     @interest.destroy
-    redirect_to current_user
+    redirect_to root_path
   end
   
   private
   
     def correct_user
       @interest = current_user.interests.find_by_id(params[:id])
-      redirect_to current_user if @interest.nil?
+      redirect_to root_path if @interest.nil?
     end
 
 end

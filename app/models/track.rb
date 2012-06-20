@@ -6,7 +6,7 @@ class Track < ActiveRecord::Base
   has_many :users, through: :interests
 
   validates :artist,  presence: true, length: { maximum: 140 }
-  validates :name,   presence: true, length: { maximum: 140 }
+  validates :name,    presence: true, length: { maximum: 140 }
 
   before_create :lookup_links
 

@@ -1,9 +1,8 @@
 MusicApp::Application.routes.draw do
   resources :users
   resources :sessions,    only: [:new, :create, :destroy]
-  resources :tracks,  only: [:create, :destroy]
-  resources :interests,  only: [:create]
-
+  resources :tracks,      only: [:create, :destroy]
+  resources :interests,   only: [:create, :destroy]
 
   root to: 'static_pages#home'
 

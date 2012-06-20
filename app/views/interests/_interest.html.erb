@@ -27,8 +27,8 @@
 		<% end %>
 	</td>
 	<td>
-	<% if current_user?(@interest.user) %>
-		<%= link_to "delete", current_user, method: :delete, data: { confirm: "Are you sure?" }, title: interest %>
+	<% if current_user?(interest.user) %>
+		<%= link_to "delete", interest_path(interest), method: :delete, data: { confirm: "Are you sure?" } %>
 	<% end %>
 	</td>
 </tr>
