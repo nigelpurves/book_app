@@ -126,7 +126,7 @@ describe User do
     let!(:older_interest) do
       FactoryGirl.create(:interest, user: @user, created_at: 1.day.ago)
     end
-    let!(:newer_track) do
+    let!(:newer_interest) do
       FactoryGirl.create(:interest, user: @user, created_at: 1.hour.ago)
     end
     
