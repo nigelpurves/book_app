@@ -1,0 +1,41 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section class="userinfo">
+      <%= render 'shared/user_info' %>
+    </section>
+    <section>
+      <%= render 'shared/track_form' %>
+    </section>
+  </aside>
+</div>
+<div class="row">
+	<div class="span12 hometracks">
+		<% if @user.tracks.any? %>
+	  	<br />
+			<h3>Tracks (<%= @user.tracks.count %>)</h3>
+			<br />
+	    <table class="table table-striped">
+				<tr>
+					<td class="track">
+						<h3>Artist</h3>
+					</td>
+					<td class="track">
+						<h3>Track</h3>
+					</td>
+					<td class="miropost">
+						<h3>Posted</h3>
+					</td>
+					<td class="miropost">
+						<h3>Availability</h3>
+					</td>
+					<td class="miropost">
+						<h3>Who else is tracking this?</h3>
+					</td>
+				</tr>
+				<tr><%= render @interests %></tr>
+	    </table>
+		<%= will_paginate @interests %>
+	  <% end %>
+	</div>
+</div>

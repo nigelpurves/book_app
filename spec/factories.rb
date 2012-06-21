@@ -15,8 +15,8 @@ FactoryGirl.define do
     name "Codex"
   end
   
-  factory :interest do
-    track_id { |i| "1+#{n}" }
-    user
+  factory :interest do |f|
+    f.association :track
+    f.association :user
   end
 end

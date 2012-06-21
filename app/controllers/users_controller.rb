@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Qusic!"
-      redirect_to root_path
+      redirect_to user_interests_path(@user)
     else
       render 'new'
     end
@@ -43,9 +43,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    sign_out
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
-    redirect_to users_path
+    redirect_to root_path
   end
 
   private
@@ -59,10 +60,10 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      not_found unless (@user.id == current_user.id)
     end
 
     def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      not_found unless current_user.admin?
     end
 end

@@ -1,7 +1,7 @@
-	<%= form_for(@interest) do |f| %>
+	<%= form_for([:user, @interest]) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 	<div class="field">
-	  <%= f.fields_for :track do |g| %>
+		<%= f.fields_for :track do |g| %>
       <%= g.text_field :artist, placeholder: "Which artist should we track...?" %>
       <%= g.text_field :name, placeholder: "Which song should we track...?" %>
   	<% end %>

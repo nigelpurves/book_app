@@ -1,9 +1,12 @@
 MusicApp::Application.routes.draw do
-  resources :users
+  
+  resources :users do
+    resources :interests, only: [:create, :index, :destroy], controller: "users/interests"
+  end
+  
   resources :sessions,    only: [:new, :create, :destroy]
-  resources :tracks,      only: [:create, :destroy]
-  resources :interests,   only: [:create, :destroy]
-
+  resources :interests,   only: [:index]
+  
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new'

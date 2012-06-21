@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "TrackPages" do
+describe "UserInterestsPages" do
 
   subject { page }
   
@@ -8,7 +8,7 @@ describe "TrackPages" do
   before { sign_in user }
   
   describe "track creation" do
-    before { visit root_path }
+    before { visit user_interests_path(user) }
     
     describe "with invalid information" do
       
@@ -23,9 +23,9 @@ describe "TrackPages" do
     end
     
     describe "with valid information" do
+      before  { fill_in 'interest[track_attributes][artist]', with: "Lorem Ipsum" }
+      before  { fill_in 'interest[track_attributes][name]',   with: "Lorem Ipsum" }
       
-      before { fill_in 'track_artist', with: "Lorem Ipsum" }
-      before { fill_in 'track_name', with: "Lorem Ipsum" }
       it "should create a track" do
         expect { click_button "Track this!" }.should change(Track, :count).by(1)
       end
