@@ -3,14 +3,15 @@ class TracksController < ApplicationController
   before_filter :correct_user,    only: :destroy
 
   def create
-    @tracks = current_user.tracks.paginate(page: params[:page])
+    @tracks = current_user.tracks.paginate(page: params[:page])  
     @track = current_user.tracks.build(params[:track])
     if @track.save
       flash[:success] = "Tracked!"
+      redirect_to root_path
     else
-      flash[:error] = track.errors.full_messages
+      render 'static_pages/home'
     end
-    redirect_to root_path
+
   end
 
   def destroy
