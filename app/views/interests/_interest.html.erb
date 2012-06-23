@@ -1,0 +1,33 @@
+<% track = interest.track %>
+
+<tr>
+	<td><%= track.artist %></td>
+	<td><%= track.name %></td>
+	<td><%= time_ago_in_words(interest.created_at) %></td>
+	<td class="track">
+		<span class="itunes">
+			<% if track.itunes_link.present? && track.spotify_link.present? %>
+				Available on <%= itunes_link(track) %> & <%= spotify_link(track) %>.
+			<% elsif track.itunes_link.present? %>
+				Available on <%= itunes_link(track) %> & tracked on Spotify.
+			<% elsif track.spotify_link.present? %>
+				Available on <%= spotify_link(track) %> & tracked on iTunes.
+			<% else %>
+				We'll tell you as soon as it's out!
+			<% end %>
+		</span>
+	</td>
+	<td>
+		<% if interest.is_last_interest? %>
+			You're the <%= interest.position.ordinalize %> tracker of this song!
+		<% else %>
+			You were the <%= interest.position.ordinalize %>
+			of <%= track.interests.count %> trackers!
+		<% end %>
+	</td>
+	<td>
+	<% if current_user?(interest.user) %>
+		<%= link_to "delete", user_interest_path(interest.user, interest), method: :delete, data: { confirm: "Are you sure?" } %>
+	<% end %>
+	</td>
+</tr>
