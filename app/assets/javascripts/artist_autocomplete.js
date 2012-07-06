@@ -2,7 +2,7 @@ $(function() {
     $("#interest_track_attributes_artist" ).autocomplete({
         source: function( request, response ) {
             $.ajax({
-                url: "http://developer.echonest.com/api/v4/artist/suggest",
+                url: "https://developer.echonest.com/api/v4/artist/suggest",
                 dataType: "jsonp",
                 data: {
                     results: 12,
