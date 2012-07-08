@@ -22,8 +22,9 @@ class Track < ActiveRecord::Base
 
   def lookup_spotify_link
     spotify_info = Spotify.search_track("#{artist} #{name}").try(:first)
-
-    if spotify_info
+    spotify_territory = spotify_info.album.availability['territories'].split(" ")
+    
+    if spotify_territory.include? "GB"
       spotify_id = spotify_info.href.split("track:")[1]
       self.spotify_link = "http://open.spotify.com/track/#{spotify_id}"
     end
