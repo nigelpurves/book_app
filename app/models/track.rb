@@ -21,7 +21,7 @@ class Track < ActiveRecord::Base
   end
 
   def lookup_spotify_link
-    spotify_info = Spotify.search_track("#{artist} #{name} NOT karaoke")
+    spotify_info = Spotify.search_track("#{artist}+#{name} NOT karaoke")
     
     unless spotify_info.nil?
       spotify_available = spotify_info.select { |track| track.album.availability['territories'].split(" ").include? "GB" }.first
