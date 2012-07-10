@@ -21,11 +21,13 @@ class Track < ActiveRecord::Base
   end
 
   def lookup_spotify_link
-    spotify_info = Spotify.search_track("#{artist} #{name}").try(:first)
+    spotify_info = Spotify.search_track("#{artist} #{name} NOT karaoke")
     
-    if spotify_info
-      if spotify_info.album.availability['territories'].split(" ").include? "GB"
-        spotify_id = spotify_info.href.split("track:")[1]
+    unless spotify_info.nil?
+      spotify_available = spotify_info.select { |track| track.album.availability['territories'].split(" ").include? "GB" }.first
+      
+      unless spotify_available.nil?
+        spotify_id = spotify_available.href.split("track:")[1]
         self.spotify_link = "http://open.spotify.com/track/#{spotify_id}"
       end
     end
