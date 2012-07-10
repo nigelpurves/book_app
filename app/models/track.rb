@@ -58,4 +58,13 @@ class Track < ActiveRecord::Base
       end
     end
   end
+  
+  def self.force_update
+    self.all.each do |track|
+      track.lookup_links
+      if track.spotify_link_changed? || track.itunes_link_changed?
+        track.save
+      end
+    end
+  end  
 end
