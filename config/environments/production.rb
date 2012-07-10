@@ -50,6 +50,20 @@ MusicApp::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  
+  config.action_mailer.default_url_options = {
+   :host => 'qusic.herokuapp.com'
+   }
+
+  config.action_mailer.smtp_settings = {
+   :address => 'smtp.sendgrid.net',
+   :port => 587,
+   :domain => 'qusic.herokuapp.com',
+   :user_name => 'app4890262@heroku.com',
+   :password => 'q7jynklb',
+   :authentication => 'plain',
+   :enable_starttls_auto => true
+  }
 
   # Enable threaded mode
   # config.threadsafe!
