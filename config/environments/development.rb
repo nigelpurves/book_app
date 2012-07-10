@@ -24,8 +24,8 @@ MusicApp::Application.configure do
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :domain => 'qusic.herokuapp.com',
-    :user_name => 'qusic',
-    :password => 'nigeno5',
+    :user_name => 'app4890262@heroku.com',
+    :password => 'q7jynklb',
     :authentication => 'plain',
     :enable_starttls_auto => true
   }
