@@ -23,6 +23,11 @@ describe "UserInterestsPages" do
     end
     
     describe "with valid information" do
+      
+      before do
+        Track.any_instance.stub(:lookup_links)
+      end
+      
       before  { fill_in 'interest[track_attributes][artist]', with: "Lorem Ipsum" }
       before  { fill_in 'interest[track_attributes][name]',   with: "Lorem Ipsum" }
       

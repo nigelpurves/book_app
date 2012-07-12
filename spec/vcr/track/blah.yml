@@ -1,0 +1,94 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track?q=%2Basdfghjkl%20%2Bqwertyuiop%20NOT%20karaoke
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 12 Jul 2012 17:00:34 GMT
+      server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      content-type:
+      - application/json; charset=utf-8
+      content-location:
+      - /search/1/track.json?q=%2Basdfghjkl%20%2Bqwertyuiop%20NOT%20karaoke
+      vary:
+      - Accept-Charset,Accept
+      expires:
+      - Fri, 13 Jul 2012 17:00:33 GMT
+      last-modified:
+      - Tue, 10 Jul 2012 15:39:25 GMT
+      content-length:
+      - '144'
+      x-varnish:
+      - '1942703403'
+      age:
+      - '0'
+      via:
+      - 1.1 varnish
+      access-control-allow-origin:
+      - ! '*'
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 0, "limit": 100, "offset": 0, "query": "+asdfghjkl
+        +qwertyuiop NOT karaoke", "type": "track", "page": 1}, "tracks": []}'
+    http_version: '1.1'
+  recorded_at: Thu, 12 Jul 2012 17:00:33 GMT
+- request:
+    method: get
+    uri: http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=asdfghjkl%20qwertyuiop&entity=song&country=GB&media=music&limit=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      x-apple-timing-app:
+      - 17 ms
+      x-apple-orig-url-path:
+      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=asdfghjkl%20qwertyuiop&entity=song&country=GB&media=music&limit=1
+      x-apple-translated-wo-url:
+      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=asdfghjkl%20qwertyuiop&entity=song&country=GB&media=music&limit=1
+      x-apple-application-site:
+      - NWK
+      x-apple-max-age:
+      - '3600'
+      content-type:
+      - text/javascript; charset=utf-8
+      x-apple-application-instance:
+      - '3045005'
+      x-webobjects-loadaverage:
+      - '0'
+      cache-control:
+      - no-transform, max-age=60
+      date:
+      - Thu, 12 Jul 2012 17:00:34 GMT
+      content-length:
+      - '42'
+      connection:
+      - close
+      vary:
+      - X-Apple-Store-Front
+      x-apple-partner:
+      - origin.0
+    body:
+      encoding: US-ASCII
+      string: ! "\n\n\n{\n \"resultCount\":0,\n \"results\": []\n}\n\n\n"
+    http_version: '1.1'
+  recorded_at: Thu, 12 Jul 2012 17:00:34 GMT
+recorded_with: VCR 2.2.3

@@ -5,6 +5,9 @@ class Users::InterestsController < ApplicationController
 
   def create
     @interest = current_user.interests.build(params[:interest])
+    if @interest.valid?
+      @interest.track.lookup_links
+    end
     if @interest.save
       flash[:success] = "Tracked!"
       redirect_to user_interests_path(current_user)

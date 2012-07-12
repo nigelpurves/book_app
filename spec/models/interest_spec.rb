@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Interest do
 
+  before do
+    Track.any_instance.stub(:lookup_links)
+  end
+
   let(:user) { FactoryGirl.create(:user) }
   let(:interest) { FactoryGirl.create(:interest, user: user) }
 

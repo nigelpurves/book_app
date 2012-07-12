@@ -3,6 +3,10 @@ require 'spec_helper'
 describe User do
   
   before do
+    Track.any_instance.stub(:lookup_links)
+  end
+  
+  before do
     @user = User.new(name: "Example User", email: "user@example.com", 
                 password: "foobar", password_confirmation: "foobar")
   end

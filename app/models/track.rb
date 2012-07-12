@@ -8,7 +8,9 @@ class Track < ActiveRecord::Base
   validates :artist,  presence: true, length: { maximum: 140 }
   validates :name,    presence: true, length: { maximum: 140 }
 
-  before_create :lookup_links, :titlecase_name
+  before_create :titlecase_name
+                # :lookup_links
+                
   
   def titlecase_name
     self.artist = self.artist.titleize
@@ -53,7 +55,7 @@ class Track < ActiveRecord::Base
       if track.spotify_link_changed? || track.itunes_link_changed?
         track.save!
         track.interests.each do |interest|
-          UserMailer.song_available(interest.id).deliver
+          UserMailer.song_available(interest).deliver
         end
       end
     end

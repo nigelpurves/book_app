@@ -1,0 +1,132 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track?q=%2BRadiohead%20%2BCodex%20NOT%20karaoke
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 12 Jul 2012 15:55:30 GMT
+      server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      content-type:
+      - application/json; charset=utf-8
+      content-location:
+      - /search/1/track.json?q=%2BRadiohead%20%2BCodex%20NOT%20karaoke
+      vary:
+      - Accept-Charset,Accept
+      expires:
+      - Fri, 13 Jul 2012 11:29:04 GMT
+      last-modified:
+      - Tue, 10 Jul 2012 15:39:25 GMT
+      content-length:
+      - '1960'
+      x-varnish:
+      - 1942540989 1941970154
+      age:
+      - '15986'
+      via:
+      - 1.1 varnish
+      access-control-allow-origin:
+      - ! '*'
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 2, "limit": 100, "offset": 0, "query": "+Radiohead
+        +Codex NOT karaoke", "type": "track", "page": 1}, "tracks": [{"album": {"released":
+        "2011", "href": "spotify:album:3EkYAh7JiJNSUxzhVLJqnL", "name": "The King
+        Of Limbs", "availability": {"territories": "AD AG AI AL AN AO AR AT AU AW
+        AX BA BB BE BF BG BI BJ BM BO BR BS BW BY BZ CA CD CF CG CH CI CL CM CO CR
+        CU CV CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FK FO FR GA GB GD GF
+        GG GH GI GL GM GN GP GQ GR GT GW GY HN HR HT HU IE IS IT JM KE KM KN KY LC
+        LI LR LS LT LU LV LY MA MC MD ME MG MK ML MQ MR MS MT MU MW MX MZ NA NE NG
+        NI NL NO NZ PA PE PL PM PR PT PY RE RO RS RU RW SC SD SE SH SI SJ SK SL SM
+        SN SO SR ST SV SZ TC TD TG TN TT TZ UA UG US UY VA VC VE VG VI YT ZA ZM ZW
+        ZZ"}}, "name": "Codex", "popularity": "0.60124", "external-ids": [{"type":
+        "isrc", "id": "GBU4B1100008"}], "length": 286.887, "href": "spotify:track:172TCtYnKdqRFPGjeGFzgc",
+        "artists": [{"href": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb", "name": "Radiohead"}],
+        "track-number": "6"}, {"album": {"released": "2011", "href": "spotify:album:5RKpp959hq0Z0QqEtqKlTo",
+        "name": "TKOL RMX 1234567", "availability": {"territories": "AD AG AI AL AN
+        AO AR AT AU AW AX BA BB BE BF BG BI BJ BM BO BR BS BW BY BZ CA CD CF CG CH
+        CI CL CM CO CR CU CV CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FK FO
+        FR GA GB GD GF GG GH GI GL GM GN GP GQ GR GT GW GY HN HR HT HU IE IS IT JM
+        KE KM KN KY LC LI LR LS LT LU LV LY MA MC MD ME MG MK ML MQ MR MS MT MU MW
+        MX MZ NA NE NG NI NL NO NZ PA PE PL PM PR PT PY RE RO RS RU RW SC SD SE SH
+        SI SJ SK SL SM SN SO SR ST SV SZ TC TD TG TN TT TZ UA UG US UY VA VC VE VG
+        VI YT ZA ZM ZW ZZ"}}, "name": "Codex (Illum Sphere RMX)", "popularity": "0.43222",
+        "external-ids": [{"type": "isrc", "id": "GBU4B1100032"}], "length": 272.382,
+        "href": "spotify:track:0ZDgSzm01RJKIOQH6bZgSm", "artists": [{"href": "spotify:artist:4Z8W4fKeB5YxbusRsdQVPb",
+        "name": "Radiohead"}], "track-number": "10"}]}'
+    http_version: '1.1'
+  recorded_at: Thu, 12 Jul 2012 15:55:30 GMT
+- request:
+    method: get
+    uri: http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Radiohead%20Codex&entity=song&country=GB&media=music&limit=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      x-apple-timing-app:
+      - 33 ms
+      x-apple-orig-url-path:
+      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=Radiohead%20Codex&entity=song&country=GB&media=music&limit=1
+      x-apple-translated-wo-url:
+      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=Radiohead%20Codex&entity=song&country=GB&media=music&limit=1
+      x-apple-application-site:
+      - ST11
+      x-apple-max-age:
+      - '3600'
+      content-type:
+      - text/javascript; charset=utf-8
+      x-apple-application-instance:
+      - '2042002'
+      x-webobjects-loadaverage:
+      - '0'
+      vary:
+      - X-Apple-Store-Front
+      - X-Apple-Store-Front
+      cache-control:
+      - no-transform, max-age=60
+      date:
+      - Thu, 12 Jul 2012 15:55:30 GMT
+      content-length:
+      - '1230'
+      connection:
+      - close
+      x-apple-partner:
+      - origin.0
+    body:
+      encoding: US-ASCII
+      string: ! "\n\n\n{\n \"resultCount\":1,\n \"results\": [\n{\"wrapperType\":\"track\",
+        \"kind\":\"song\", \"artistId\":657515, \"collectionId\":425806837, \"trackId\":425806908,
+        \"artistName\":\"Radiohead\", \"collectionName\":\"The King of Limbs\", \"trackName\":\"Codex\",
+        \"collectionCensoredName\":\"The King of Limbs\", \"trackCensoredName\":\"Codex\",
+        \"artistViewUrl\":\"http://itunes.apple.com/gb/artist/radiohead/id657515?uo=4\",
+        \"collectionViewUrl\":\"http://itunes.apple.com/gb/album/codex/id425806837?i=425806908&uo=4\",
+        \"trackViewUrl\":\"http://itunes.apple.com/gb/album/codex/id425806837?i=425806908&uo=4\",
+        \"previewUrl\":\"http://a2.mzstatic.com/us/r30/Music/5f/00/b9/mzi.wrfjygdl.aac.p.m4a\",
+        \"artworkUrl30\":\"http://a3.mzstatic.com/us/r30/Music/66/36/bb/mzi.peijgtow.30x30-50.jpg\",
+        \"artworkUrl60\":\"http://a2.mzstatic.com/us/r30/Music/66/36/bb/mzi.peijgtow.60x60-50.jpg\",
+        \"artworkUrl100\":\"http://a2.mzstatic.com/us/r30/Music/66/36/bb/mzi.peijgtow.100x100-75.jpg\",
+        \"collectionPrice\":6.99, \"trackPrice\":0.99, \"releaseDate\":\"2011-02-18T08:00:00Z\",
+        \"collectionExplicitness\":\"notExplicit\", \"trackExplicitness\":\"notExplicit\",
+        \"discCount\":1, \"discNumber\":1, \"trackCount\":8, \"trackNumber\":6, \"trackTimeMillis\":287067,
+        \"country\":\"GBR\", \"currency\":\"GBP\", \"primaryGenreName\":\"Alternative\"}]\n}\n\n\n"
+    http_version: '1.1'
+  recorded_at: Thu, 12 Jul 2012 15:55:30 GMT
+recorded_with: VCR 2.2.3

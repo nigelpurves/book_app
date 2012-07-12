@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track?q=%2BAlabama%20Shakes%20%2BHold%20on%20NOT%20karaoke
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Thu, 12 Jul 2012 15:55:31 GMT
+      server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      content-type:
+      - application/json; charset=utf-8
+      content-location:
+      - /search/1/track.json?q=%2BAlabama%20Shakes%20%2BHold%20on%20NOT%20karaoke
+      vary:
+      - Accept-Charset,Accept
+      expires:
+      - Fri, 13 Jul 2012 15:55:31 GMT
+      last-modified:
+      - Tue, 10 Jul 2012 15:39:25 GMT
+      content-length:
+      - '3918'
+      x-varnish:
+      - '1942541005'
+      age:
+      - '0'
+      via:
+      - 1.1 varnish
+      access-control-allow-origin:
+      - ! '*'
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 6, "limit": 100, "offset": 0, "query": "+Alabama
+        Shakes +Hold on NOT karaoke", "type": "track", "page": 1}, "tracks": [{"album":
+        {"released": "2012", "href": "spotify:album:4T5HcyeH1iwJezAZdgrhw0", "name":
+        "Hold On", "availability": {"territories": "US"}}, "name": "Hold On", "popularity":
+        "0.70293", "external-ids": [{"type": "isrc", "id": "USATO1200067"}], "length":
+        229.453, "href": "spotify:track:7c13Xlndg43PnSzpHRD11d", "artists": [{"href":
+        "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}], "track-number":
+        "1"}, {"album": {"released": "2012", "href": "spotify:album:08ganBQBnRuCWcpkAwZ4IS",
+        "name": "Boys & Girls", "availability": {"territories": "US"}}, "name": "Hold
+        On", "popularity": "0.67705", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
+        "length": 226.186, "href": "spotify:track:0LcBTwZ84PAZKMDPjeEglx", "artists":
+        [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
+        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:7pVZWR612HixnZICqq4XIX",
+        "name": "Hold On", "availability": {"territories": "AD AE AF AG AL AM AN AO
+        AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BO BR BS BT BW BY BZ CC CD
+        CF CG CH CL CM CN CO CR CU CX CY CZ DE DJ DK DM DO DZ EC EE EG ER ES ET FI
+        FJ FK FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GT GW GY HK HM HN HR
+        HT HU ID IE IL IM IN IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY
+        KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MK ML MN MO MQ MT MV MW
+        MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PG PH PK PL PM PT PY QA
+        RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC
+        TD TG TH TJ TK TM TN TR TV TW TZ UA UG UY UZ VA VC VE VG VN VU WF WS ZA ZM
+        ZW ZZ"}}, "name": "Hold On", "popularity": "0.63566", "external-ids": [{"type":
+        "isrc", "id": "USATO1200017"}], "length": 226.0, "href": "spotify:track:5yDGLzX0iyVu51xA7olnME",
+        "artists": [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama
+        Shakes"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:0YcQyzstsSbcnLCk4h7AUh",
+        "name": "Boys & Girls", "availability": {"territories": "AD AE AF AG AL AM
+        AN AO AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BO BR BS BT BW BY BZ
+        CC CD CF CG CH CL CM CN CO CR CU CX CY CZ DE DJ DK DM DO DZ EC EE EG ER ES
+        ET FI FJ FK FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GT GW GY HK HM
+        HN HR HT HU ID IE IL IM IN IQ IR IS IT JE JM JO KE KG KH KI KM KN KP KR KW
+        KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MK ML MN MO MQ MT MV
+        MW MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PG PH PK PL PM PT PY
+        QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ
+        TC TD TG TH TJ TK TM TN TR TV TW TZ UA UG UY UZ VA VC VE VG VN VU WF WS ZA
+        ZM ZW ZZ"}}, "name": "Hold On", "popularity": "0.64679", "external-ids": [{"type":
+        "isrc", "id": "USATO1200017"}], "length": 226.0, "href": "spotify:track:1gGY6qfslDtJ4OoWQGKtkE",
+        "artists": [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama
+        Shakes"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:3BqLtntt6yJaS2ZFSUVXbG",
+        "name": "Hold On", "availability": {"territories": "CA"}}, "name": "Hold On",
+        "popularity": "0.09489", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
+        "length": 229.46, "href": "spotify:track:4mi0Ai4QfZdR93iDZIQpVI", "artists":
+        [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
+        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:2G9ntyxiHbD6yK9RxaB7Cy",
+        "name": "Boys & Girls", "availability": {"territories": "CA"}}, "name": "Hold
+        On", "popularity": "0.07024", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
+        "length": 229.46, "href": "spotify:track:60kEbEbxKPyuLGJaONFAPU", "artists":
+        [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
+        "track-number": "1"}]}'
+    http_version: '1.1'
+  recorded_at: Thu, 12 Jul 2012 15:55:31 GMT
+- request:
+    method: get
+    uri: http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20on&entity=song&country=GB&media=music&limit=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      x-apple-timing-app:
+      - 49 ms
+      x-apple-orig-url-path:
+      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20on&entity=song&country=GB&media=music&limit=1
+      x-apple-translated-wo-url:
+      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20on&entity=song&country=GB&media=music&limit=1
+      x-apple-application-site:
+      - NWK
+      x-apple-max-age:
+      - '3600'
+      content-type:
+      - text/javascript; charset=utf-8
+      x-apple-application-instance:
+      - '3020005'
+      x-webobjects-loadaverage:
+      - '0'
+      vary:
+      - X-Apple-Store-Front
+      - X-Apple-Store-Front
+      cache-control:
+      - no-transform, max-age=51
+      date:
+      - Thu, 12 Jul 2012 15:55:31 GMT
+      content-length:
+      - '1275'
+      connection:
+      - close
+      x-apple-partner:
+      - origin.0
+    body:
+      encoding: US-ASCII
+      string: ! "\n\n\n{\n \"resultCount\":1,\n \"results\": [\n{\"wrapperType\":\"track\",
+        \"kind\":\"song\", \"artistId\":498509884, \"collectionId\":499856834, \"trackId\":499856838,
+        \"artistName\":\"Alabama Shakes\", \"collectionName\":\"Boys & Girls\", \"trackName\":\"Hold
+        On\", \"collectionCensoredName\":\"Boys & Girls\", \"trackCensoredName\":\"Hold
+        On\", \"artistViewUrl\":\"http://itunes.apple.com/gb/artist/alabama-shakes/id498509884?uo=4\",
+        \"collectionViewUrl\":\"http://itunes.apple.com/gb/album/hold-on/id499856834?i=499856838&uo=4\",
+        \"trackViewUrl\":\"http://itunes.apple.com/gb/album/hold-on/id499856834?i=499856838&uo=4\",
+        \"previewUrl\":\"http://a5.mzstatic.com/us/r1000/116/Music/e2/ee/84/mzi.vaaqyzsc.aac.p.m4a\",
+        \"artworkUrl30\":\"http://a4.mzstatic.com/us/r1000/099/Features/1c/f1/f0/dj.nvxfxzus.30x30-50.jpg\",
+        \"artworkUrl60\":\"http://a3.mzstatic.com/us/r1000/099/Features/1c/f1/f0/dj.nvxfxzus.60x60-50.jpg\",
+        \"artworkUrl100\":\"http://a1.mzstatic.com/us/r1000/099/Features/1c/f1/f0/dj.nvxfxzus.100x100-75.jpg\",
+        \"collectionPrice\":7.99, \"trackPrice\":0.99, \"releaseDate\":\"2012-04-06T07:00:00Z\",
+        \"collectionExplicitness\":\"notExplicit\", \"trackExplicitness\":\"notExplicit\",
+        \"discCount\":1, \"discNumber\":1, \"trackCount\":12, \"trackNumber\":1, \"trackTimeMillis\":226187,
+        \"country\":\"GBR\", \"currency\":\"GBP\", \"primaryGenreName\":\"Alternative\"}]\n}\n\n\n"
+    http_version: '1.1'
+  recorded_at: Thu, 12 Jul 2012 15:55:31 GMT
+recorded_with: VCR 2.2.3

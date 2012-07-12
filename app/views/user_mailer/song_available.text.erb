@@ -1,1 +1,8 @@
-Great news! <%= @interest.track.name %> is now available.
+Great news, <%= @interest.track.name %> by <%= @interest.track.artist %> is now available:
+
+<%= raw @interest.track.spotify_link %>
+<%= raw @interest.track.itunes_link %>
+
+Happy tracking!
+
+The Qusic Team
