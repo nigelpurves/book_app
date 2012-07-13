@@ -21,3 +21,4 @@ doc/
 .project
 .DS_store
 bundler_stubs/
+.rvmrc
