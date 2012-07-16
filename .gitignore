@@ -22,3 +22,4 @@ doc/
 .DS_store
 bundler_stubs/
 .rvmrc
+config/database.yml
