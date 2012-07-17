@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617170841) do
+ActiveRecord::Schema.define(:version => 20120717153538) do
 
   create_table "interests", :force => true do |t|
     t.integer  "user_id"
     t.integer  "track_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "source"
+    t.string   "url"
   end
 
   add_index "interests", ["user_id", "track_id"], :name => "index_interests_on_user_id_and_track_id"
@@ -34,13 +36,15 @@ ActiveRecord::Schema.define(:version => 20120617170841) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           :default => false
+    t.boolean  "admin",             :default => false
+    t.string   "bookmarklet_token"
   end
 
+  add_index "users", ["bookmarklet_token"], :name => "index_users_on_bookmarklet_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 

@@ -32,3 +32,16 @@ describe Interest do
     end
   end
 end
+# == Schema Information
+#
+# Table name: interests
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  track_id   :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  source     :string(255)
+#  url        :string(255)
+#
+

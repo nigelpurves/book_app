@@ -1,17 +1,20 @@
 MusicApp::Application.routes.draw do
-  
+
   resources :users do
-    resources :interests, only: [:create, :index, :destroy], controller: "users/interests"
+    resources :interests,  only: [:create, :index, :destroy], controller: "users/interests"
   end
-  
-  resources :sessions,    only: [:new, :create, :destroy]
-  resources :interests,   only: [:index]
-  
-  root to: 'static_pages#home'
+
+  resources :sessions,     only: [:new, :create, :destroy]
+  resources :interests,    only: [:index]
+  resources :bookmarklets, only: [:new, :show]
+  resource  :tracker,      only: [:new], controller: "tracker"
+
+  # match 'droplet'   to: 'bookmarklets#create', via: :get
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+
 
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
@@ -19,6 +22,8 @@ MusicApp::Application.routes.draw do
 
   get "pages/home"
   get "pages/contact"
+
+  root to: 'static_pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

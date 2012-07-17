@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-# gem "pg", "~> 0.11.0"
+gem 'pg', '0.14.0'
+
 gem 'bootstrap-sass', '2.0.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
@@ -55,7 +56,7 @@ group :test, :development do
   gem 'guard-rspec', '0.5.5'
   # gem 'guard-spork', '0.3.2'
   # gem 'spork', '0.9.0'
-	gem 'sqlite3'
+	# gem 'sqlite3'
 end
 
 group :test do
@@ -65,8 +66,4 @@ group :test do
   gem 'database_cleaner', '0.7.0'
   gem 'vcr'
   gem 'fakeweb'
-end
-
-group :production do
-  gem 'pg', '0.12.2'
 end

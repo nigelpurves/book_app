@@ -33,3 +33,16 @@ describe Track do
   end
 
 end
+# == Schema Information
+#
+# Table name: tracks
+#
+#  id           :integer         not null, primary key
+#  artist       :string(255)
+#  name         :string(255)
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
+#  spotify_link :string(255)
+#  itunes_link  :string(255)
+#
+

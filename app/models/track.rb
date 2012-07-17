@@ -1,17 +1,17 @@
+require 'spotify'
+
 class Track < ActiveRecord::Base
-  require 'spotify'
 
   attr_accessible :artist, :name
   has_many :interests
   has_many :users, through: :interests
 
-  validates :artist,  presence: true, length: { maximum: 140 }
-  validates :name,    presence: true, length: { maximum: 140 }
+  validates :artist, presence: true, length: {maximum: 140}
+  validates :name, presence: true, length: {maximum: 140}
 
   before_create :titlecase_name
-                # :lookup_links
-                
-  
+
+
   def titlecase_name
     self.artist = self.artist.titleize
     self.name   = self.name.titleize
@@ -24,12 +24,12 @@ class Track < ActiveRecord::Base
 
   def lookup_spotify_link
     spotify_info = Spotify.search_track("#{artist} #{name} NOT karaoke")
-    
+
     unless spotify_info.nil?
       spotify_available = spotify_info.select { |track| track.album.availability['territories'].split(" ").include? "GB" }.first
-      
+
       unless spotify_available.nil?
-        spotify_id = spotify_available.href.split("track:")[1]
+        spotify_id        = spotify_available.href.split("track:")[1]
         self.spotify_link = "http://open.spotify.com/track/#{spotify_id}"
       end
     end
@@ -37,11 +37,11 @@ class Track < ActiveRecord::Base
 
   def lookup_itunes_link
     itunes_info = ITunesSearchAPI.search(
-      :term => "#{artist} #{name}",
-      :entity=> "song",
+      :term    => "#{artist} #{name}",
+      :entity  => "song",
       :country => "GB",
-      :media => "music",
-      :limit => "1"
+      :media   => "music",
+      :limit   => "1"
     ).first
 
     self.itunes_link = itunes_info["trackViewUrl"] if itunes_info.present?
@@ -60,10 +60,10 @@ class Track < ActiveRecord::Base
       end
     end
   end
-  
+
   def self.force_update
     self.all.each do |track|
-      track.spotify_link = nil 
+      track.spotify_link = nil
       track.itunes_link  = nil
       track.save
       track.lookup_links
@@ -71,5 +71,18 @@ class Track < ActiveRecord::Base
         track.save
       end
     end
-  end  
+  end
 end
+# == Schema Information
+#
+# Table name: tracks
+#
+#  id           :integer         not null, primary key
+#  artist       :string(255)
+#  name         :string(255)
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
+#  spotify_link :string(255)
+#  itunes_link  :string(255)
+#
+
