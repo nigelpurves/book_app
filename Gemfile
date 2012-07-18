@@ -67,3 +67,7 @@ group :test do
   gem 'vcr'
   gem 'fakeweb'
 end
+
+group :deploy do
+  gem 'capistrano'
+end
