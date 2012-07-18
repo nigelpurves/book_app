@@ -1,7 +1,7 @@
 // = require 'vendor/snack-qwery'
 // = require 'vendor/bonzo'
 
-
+// TODO replace bonzo-qwery-snack shit with zepto.js and CLEAN UP!
 (function (w, d) {
 
   var $ = function (selector) {
@@ -14,76 +14,83 @@
   }
 
   var detectYoutube = function () {
-    var title = "", artist = "", splits, raw_title = $("#eow-title").text().replace(/\n|\s{2,}|\t|\r/g, '');
+      var title = "", artist = "", splits, raw_title = $("#eow-title").text().replace(/\n|\s{2,}|\t|\r/g, '');
 
-    if ($("#watch-headline-show-title").length > 0) {
-      artist = $("#watch-headline-show-title").text();
-      title = raw_title.replace(artist, '').replace(/:\-\–\-\-/g, '');
-    } else {
-      splits = raw_title.split(/\s*-\s*/);
-      if (splits.length > 1) {
-        title = splits[1];
-        artist = splits[0];
+      if ($("#watch-headline-show-title").length > 0) {
+        artist = $("#watch-headline-show-title").text();
+        title = raw_title.replace(artist, '').replace(/[:\-\–\-]/g, '');
       } else {
-        title = splits[0];
+        splits = raw_title.split(/\s*-\s*/);
+        if (splits.length > 1) {
+          title = splits[1];
+          artist = splits[0];
+        } else {
+          title = splits[0];
+        }
       }
+      title = title.replace(/\s*\(.+\)/g, '').replace(/\s{2,}/g, '');
+      return {artist:artist, trackname:title, href:document.location.href, source:'youtube' };
+    },
 
-    }
-    title = title.replace(/\s*\(.+\)/g, '').replace(/\s{2,}/g, '');
-    return {artist:artist, trackname:title, href:document.location.href };
-  };
+    byId = function (id) {
+      return d.getElementById(id);
+    },
 
-  var byId = function (id) {
-    return d.getElementById(id);
-  };
+    buildRequestData = function (base) {
+      var token = $("#qusic-script").data("qusic-token"),
+        artist = $("#qusic-artist").val(),
+        trackname = $("#qusic-trackname").val(),
+        url = $("#qusic-href").val(),
+        source = $("#qusic-src").val();
+      return {source:source, artist:artist, trackname:trackname, url:url, token:token};
+    },
 
-  var buildRequestData = function (base) {
-    var token = $("#qusic-script").data("qusic-token"),
-      artist = $("#qusic-artist").val(),
-      trackname = $("#qusic-trackname").val(),
-      url = $("#qusic-href").val(),
-      source = $("#qusic-src").val();
-    return {source: source, artist: artist, trackname: trackname, url: url, token: token};
-  };
+    feedBack = function (response) {
+      if (response['response_code'] == 200) {
+        $("#qusic-trackit-disabled").css("background", "#56BA4A").text("Success!");
+        setTimeout(function() { $("#qusic-container").hide(); }, 1000);
+      } else {
+        $("#qusic-trackit-disabled").css("background", "#9d261d").text("Error: "+ response['error']);
+      }
+    },
 
-  var feedBack = function(response) {
-    if(response['response_code'] == 200) {
-      alert("Done!")
-      $("#qusic-container").hide();
-    } else {
-      alert(":( There was an error: " + response['error']);
-    }
-  };
+    submitInfo = function () {
+      var data = buildRequestData(), url = findHost() + '/tracker/new';
+      var params = {
+        url:url,
+        data:data,
+        key:'callback'
+      };
 
-  var submitInfo = function () {
-    console.log("<%= Rails.env %>");
-    var data = buildRequestData();
-    var params = {
-      url:'http://localhost:3000/tracker/new',
-      data: data,
-      key:'callback'
-    };
+      snack.JSONP(params, function (data) {
+        feedBack(data);
+      })
+    },
 
-    snack.JSONP(params, function (data) {
-      feedBack(data);
-    })
-  };
+    findHost = function () {
+      var parser = document.createElement("a");
+      parser.href = $("#qusic-script").attr("src");
+      return parser.protocol + "//" + parser.host;
+    },
 
-  var div = d.createElement("div");
+    updateForm = function (info) {
+      $("#qusic-artist").attr("value", info.artist);
+      $("#qusic-trackname").attr("value", info.trackname);
+      $("#qusic-href").attr("value", info.href);
+      $("#qusic-src").attr("value", info.source);
+    },
+    out, status,
+    div = d.createElement("div");
 
   div.setAttribute("id", "qusic-container");
   div.innerHTML = "<%= File.read(File.join(Rails.root, 'app','views', 'shared', '_bookmarklet.html')).delete("\n").gsub(/\"/,'\\"') %>";
   d.body.appendChild(div);
 
-  var out = $("#qusic-format");
+  out = $("#qusic-format");
 
   if (d.location.host.match(/youtube\.com$/) != null) {
     out.text("Youtube detected.");
-    var info = detectYoutube();
-    $("#qusic-artist").attr("value", info.artist);
-    $("#qusic-trackname").attr("value", info.trackname);
-    $("#qusic-href").attr("value", info.href);
-    $("#qusic-src").attr("value", "youtube");
+    updateForm(detectYoutube());
   }
 
   if (d.location.host.match(/soundcloud\.com$/) != null) {
@@ -94,11 +101,13 @@
     out.text("Mixcloud not implemented yet.");
   }
 
-
   snack.listener({
     node:byId('qusic-trackit'),
     event:'click'
   }, function () {
+    $("#qusic-trackit").hide();
+    $("#qusic-trackit-disabled").show();
+    $("#qusic-trackit-disabled").text("Working...");
     submitInfo();
   });
 
