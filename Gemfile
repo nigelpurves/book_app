@@ -71,3 +71,7 @@ end
 group :deploy do
   gem 'capistrano'
 end
+
+group :production do
+  gem 'unicorn'
+end
