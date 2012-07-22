@@ -16,6 +16,9 @@ gem 'multi_json', '1.0.3'
 gem 'nestling', '0.1.2'
 gem 'jquery-rails', '2.0.0'
 
+gem 'whenever', :require => false
+
+
 group :development do
   gem 'annotate', '~> 2.4.1.beta'
 end
