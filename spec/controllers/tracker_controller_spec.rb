@@ -52,12 +52,12 @@ describe TrackerController do
     end
 
     it "should render a jsonp response" do
-      response.body.should == jsonp_of({:message => "Invalid parameters!", :response_code => 400})
+      response.body.should == jsonp_of({:error => "Invalid parameters!", :response_code => 400})
     end
 
   end
 
-  def jsonp_of hash, callback = "qusic-callback"
+  def jsonp_of hash, callback = "qusic_callback"
     "#{callback}(#{hash.to_json})"
   end
 
