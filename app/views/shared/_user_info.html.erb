@@ -8,3 +8,13 @@
 <span>
   <%= pluralize(@user.tracks.count, "track") %>
 </span>
+<span>
+  <% if @user.has_bookmarklet_token? then %>
+  <%  %>
+    Your bookmarklet:
+    <%=  render "shared/bookmarklet_link", :user => @user %>
+  <% else %>
+    You haven't created a bookmarklet yet!
+    <%= link_to "Do it! Now!", new_bookmarklet_path %>
+  <% end %>
+</span>

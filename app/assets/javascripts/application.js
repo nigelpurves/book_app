@@ -21,3 +21,10 @@
 
 
 // require_tree .
+
+$(".js-disable").each(function(i, e) {
+  $(e).click(function() {
+    alert("Drag this bookmarklet to your toolbar and use it on sites like youtube and soundcloud to track stuff on qusic!");
+    return false
+  });
+});
