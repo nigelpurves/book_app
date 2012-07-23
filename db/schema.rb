@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617170841) do
+ActiveRecord::Schema.define(:version => 20120723151559) do
+
+  create_table "artists", :force => true do |t|
+    t.string   "name"
+    t.string   "spotify_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "interests", :force => true do |t|
     t.integer  "user_id"
     t.integer  "track_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "artist_id"
   end
 
   add_index "interests", ["user_id", "track_id"], :name => "index_interests_on_user_id_and_track_id"
@@ -29,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120617170841) do
     t.datetime "updated_at",   :null => false
     t.string   "spotify_link"
     t.string   "itunes_link"
+    t.integer  "artist_id"
   end
 
   create_table "users", :force => true do |t|

@@ -3,24 +3,15 @@ require 'spec_helper'
 describe Track do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @track = user.tracks.build(artist: "Radiohead", name: "Codex") }
+  before { @track = user.tracks.build(name: "Codex") }
 
   subject { @track }
 
-  it { should respond_to(:artist) }
-  it { should respond_to(:name) }
+  pending # it { should_not respond_to(:artist) }
+  it { should     respond_to(:name) }
+  it { should     respond_to(:artist_id) }
 
   it { should be_valid }
-
-  describe "with blank artist" do
-    before { @track.artist = "  " }
-    it { should_not be_valid }
-  end
-
-  describe "with artist entry too long" do
-    before { @track.artist = "a" * 141 }
-    it { should_not be_valid }
-  end
 
   describe "with blank track" do
     before { @track.name = "  " }

@@ -28,11 +28,31 @@ describe "UserInterestsPages" do
         Track.any_instance.stub(:lookup_links)
       end
       
-      before  { fill_in 'interest[track_attributes][artist]', with: "Lorem Ipsum" }
-      before  { fill_in 'interest[track_attributes][name]',   with: "Lorem Ipsum" }
+      describe "should create a track" do
       
-      it "should create a track" do
-        expect { click_button "Track this!" }.should change(Track, :count).by(1)
+        before  { fill_in 'interest[artist_attributes][name]',  with: "Lorem Ipsum" }
+        before  { fill_in 'interest[track_attributes][name]',     with: "Lorem Ipsum" }
+        
+        it "interest" do
+          expect { click_button "Track this!" }.should change(Interest, :count).by(1)
+        end
+        
+        it "record" do
+          expect { click_button "Track this!" }.should change(Track, :count).by(1)
+        end
+      end
+      
+      describe "should create an artist" do
+      
+        before  { fill_in 'interest[artist_attributes][name]',  with: "Lorem Ipsum" }
+        
+        it "interest" do
+          expect { click_button "Track this!" }.should change(Interest, :count).by(1)
+        end
+        
+        it "record" do
+          expect { click_button "Track this!" }.should change(Artist, :count).by(1)
+        end
       end
     end
   end

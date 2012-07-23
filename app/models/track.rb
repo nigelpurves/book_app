@@ -4,16 +4,15 @@ class Track < ActiveRecord::Base
   attr_accessible :artist, :name
   has_many :interests
   has_many :users, through: :interests
+  belongs_to :artist
 
-  validates :artist,  presence: true, length: { maximum: 140 }
-  validates :name,    presence: true, length: { maximum: 140 }
+  validates :name,      presence: true, length: { maximum: 140 }
+#  validates :artist_id, presence: true  -  Must stay commented out as elicits mass assignment errors in tests otherwise
 
   before_create :titlecase_name
                 # :lookup_links
-                
-  
+
   def titlecase_name
-    self.artist = self.artist.titleize
     self.name   = self.name.titleize
   end
 

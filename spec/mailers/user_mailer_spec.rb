@@ -3,9 +3,10 @@ require "spec_helper"
 describe UserMailer do
   
   let(:user) { FactoryGirl.create(:user) }
+  let(:artist) { FactoryGirl.create(:artist) }
   let(:track) { FactoryGirl.create(:track, spotify_link: "http://open.spotify.com/track/172TCtYnKdqRFPGjeGFzgc", itunes_link: "http://itunes.apple.com/gb/album/codex/id425806837?i=425806908&uo=4") }
-  let(:interest) { FactoryGirl.create(:interest, user: user, track: track) }
-
+  let(:interest) { FactoryGirl.create(:interest, user: user, track: track, artist: artist) }
+  let(:interest_artist) { FactoryGirl.create(:interest_artist, user: user, artist: artist) }
   
   before(:each) do
     ActionMailer::Base.deliveries = []
