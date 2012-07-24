@@ -1,10 +1,12 @@
 class Track < ActiveRecord::Base
   require 'spotify'
 
-  attr_accessible :artist, :name
+  attr_accessible :name
   has_many :interests
   has_many :users, through: :interests
   belongs_to :artist
+  
+  accepts_nested_attributes_for :artist
 
   validates :name,      presence: true, length: { maximum: 140 }
 #  validates :artist_id, presence: true  -  Must stay commented out as elicits mass assignment errors in tests otherwise

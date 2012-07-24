@@ -2,8 +2,8 @@ class Artist < ActiveRecord::Base
   require 'spotify'
   
   attr_accessible :name
-  has_many :interests
-  has_many :users, through: :interests
+  has_many :interests, through: :tracks
+#  has_many :users, through: :interests
   has_many :tracks
   
   validates :name,  presence: true, length: { maximum: 140 }

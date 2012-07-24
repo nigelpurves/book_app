@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :interests, dependent: :destroy
   has_many :tracks, through: :interests
-  has_many :artists, through: :interests
+#  has_many :artists, through: :interests
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
