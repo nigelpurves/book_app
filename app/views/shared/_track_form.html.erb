@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', object: f.object %>
 	<div class="field">
 		<%= f.fields_for :track do |g| %>
-			<%= g.fields_for :artist do |h| %>
+			<%= g.fields_for :artist_attributes do |h| %>
       	<%= h.text_field :name, placeholder: "Which artist should we track...?", class: "ui-autocomplete-input" %>
 			<% end %>
       <%= g.text_field :name, placeholder: "Which song should we track...?" %>

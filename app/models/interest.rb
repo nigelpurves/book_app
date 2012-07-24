@@ -30,6 +30,10 @@ class Interest < ActiveRecord::Base
     self.track = Track.joins('INNER JOIN "artists" as artist_attributes ON "artist_attributes"."id" = "tracks"."artist_id"').where(attrs).first_or_initialize
   end
   
+  def artist
+    track.artist
+  end
+  
 #  def artist_attributes=(attrs)
 #    self.artist = Artist.where(attrs).first_or_initialize
 #  end
