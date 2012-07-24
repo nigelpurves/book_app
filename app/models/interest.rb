@@ -27,7 +27,7 @@ class Interest < ActiveRecord::Base
 
   def track_attributes=(attrs)
     Rails.logger.info attrs
-    self.track = Track.joins('INNER JOIN "artists" as artist ON "artist"."id" = "tracks"."artist_id"').where(attrs).first_or_initialize
+    self.track = Track.joins('INNER JOIN "artists" as artist_attributes ON "artist_attributes"."id" = "tracks"."artist_id"').where(attrs).first_or_initialize
   end
   
 #  def artist_attributes=(attrs)

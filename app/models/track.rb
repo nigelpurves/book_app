@@ -1,7 +1,7 @@
 class Track < ActiveRecord::Base
   require 'spotify'
 
-  attr_accessible :name
+  attr_accessible :name, :artist_attributes
   has_many :interests
   has_many :users, through: :interests
   belongs_to :artist

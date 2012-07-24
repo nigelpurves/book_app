@@ -20,6 +20,7 @@ class Users::InterestsController < ApplicationController
   def index
     @interest = @user.interests.build
     @interest.build_track
+    @interest.track.build_artist
   end
   
   def destroy
