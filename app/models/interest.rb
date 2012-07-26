@@ -12,7 +12,7 @@ class Interest < ActiveRecord::Base
   attr_accessible :track, :track_name, :artist_name
 
   # validates :track_id, presence: true     DO NOT UNCOMMENT, BREAKS EVERYTHING!
-  validates :user, presence: true
+  validates :user, :artist_name, :track_name, presence: true
   
   default_scope order: 'interests.created_at DESC'
   scope :reverse_order, order('created_at ASC')

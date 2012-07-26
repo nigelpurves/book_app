@@ -14,12 +14,12 @@ FactoryGirl.define do
     name "Radiohead"
   end
   
-  factory :track do
+  factory :track do |f|
+    f.association :artist
     name "Codex"
   end
   
   factory :interest do |f|
-    f.association :artist
     f.association :track
     f.association :user
   end
