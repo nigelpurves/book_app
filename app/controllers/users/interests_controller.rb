@@ -4,9 +4,12 @@ class Users::InterestsController < ApplicationController
   before_filter :correct_user,    only: :destroy
 
   def create
-    @interest = current_user.interests.build(params[:interest])
+    @interest = Interest.build_interest(params[:interest][:track_name], params[:interest][:artist_name])
+    @interest.user = current_user
+# TODO: REFACTOR THIS
     if @interest.valid?
       @interest.track.lookup_links
+      @interest.track.save
     end
     if @interest.save
       flash[:success] = "Tracked!"

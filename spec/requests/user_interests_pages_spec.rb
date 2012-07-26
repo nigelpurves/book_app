@@ -30,8 +30,8 @@ describe "UserInterestsPages" do
       
       describe "should create a track" do
       
-        before  { fill_in 'interest[artist_attributes][name]',  with: "Lorem Ipsum" }
-        before  { fill_in 'interest[track_attributes][name]',     with: "Lorem Ipsum" }
+        before  { fill_in 'interest[artist_name]',  with: "Lorem Ipsum" }
+        before  { fill_in 'interest[track_name]',     with: "Lorem Ipsum" }
         
         it "interest" do
           expect { click_button "Track this!" }.should change(Interest, :count).by(1)
@@ -44,7 +44,7 @@ describe "UserInterestsPages" do
       
       describe "should create an artist" do
       
-        before  { fill_in 'interest[artist_attributes][name]',  with: "Lorem Ipsum" }
+        before  { fill_in 'interest[artist_name]',  with: "Lorem Ipsum" }
         
         it "interest" do
           expect { click_button "Track this!" }.should change(Interest, :count).by(1)

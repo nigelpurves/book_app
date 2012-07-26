@@ -1,7 +1,7 @@
 <% track = interest.track %>
 
 <tr>
-	<td><%= track.artist %></td>
+	<td><%= track.artist.try(:name) %></td>
 	<td><%= track.name %></td>
 	<td><%= time_ago_in_words(interest.created_at) %></td>
 	<td class="track">

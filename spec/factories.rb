@@ -23,9 +23,4 @@ FactoryGirl.define do
     f.association :track
     f.association :user
   end
-  
-  factory :interest_artist do |f|
-    f.association :artist
-    f.association :user
-  end
 end

@@ -1,15 +1,15 @@
 class Interest < ActiveRecord::Base
   belongs_to :user
   belongs_to :track
-#  belongs_to :artist
+  belongs_to :artist
   
 #  attr_accessor :track, :artist            BREAKS MANY THINGS
 
-  accepts_nested_attributes_for :track
-        #, :artist
+#  accepts_nested_attributes_for :track, :artist
 
-  attr_accessible :track_attributes
-        #, :artist_attributes
+  attr_accessor :artist_name, :track_name
+  
+  attr_accessible :track, :track_name, :artist_name
 
   # validates :track_id, presence: true     DO NOT UNCOMMENT, BREAKS EVERYTHING!
   validates :user, presence: true
@@ -25,17 +25,15 @@ class Interest < ActiveRecord::Base
     self.track.interests.count == self.position
   end
 
-  def track_attributes=(attrs)
-    Rails.logger.info attrs
-    self.track = Track.joins('INNER JOIN "artists" as artist_attributes ON "artist_attributes"."id" = "tracks"."artist_id"').where(attrs).first_or_initialize
+  def self.build_interest(track_name, artist_name)
+    track_record = Track.joins(:artist).where(name: track_name, :artists => { name: artist_name }).first
+    if track_record.nil?
+      artist_record = Artist.find_by_name(:artist_name)
+      if artist_record.nil?
+        artist_record = Artist.create(name: artist_name)
+      end
+      track_record = Track.create(name: track_name, artist: artist_record)
+    end
+    Interest.new(track: track_record, track_name: track_name, artist_name: artist_name)
   end
-  
-  def artist
-    track.artist
-  end
-  
-#  def artist_attributes=(attrs)
-#    self.artist = Artist.where(attrs).first_or_initialize
-#  end
-
 end

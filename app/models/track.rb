@@ -1,7 +1,7 @@
 class Track < ActiveRecord::Base
   require 'spotify'
 
-  attr_accessible :name, :artist_attributes
+  attr_accessible :name, :artist
   has_many :interests
   has_many :users, through: :interests
   belongs_to :artist
@@ -24,7 +24,7 @@ class Track < ActiveRecord::Base
   end
 
   def lookup_spotify_link
-    spotify_info = Spotify.search_track("#{artist} #{name} NOT karaoke")
+    spotify_info = Spotify.search_track("#{artist.name} #{name} NOT karaoke")
     
     unless spotify_info.nil?
       spotify_available = spotify_info.select { |track| track.album.availability['territories'].split(" ").include? "GB" }.first
@@ -38,7 +38,7 @@ class Track < ActiveRecord::Base
 
   def lookup_itunes_link
     itunes_info = ITunesSearchAPI.search(
-      :term => "#{artist} #{name}",
+      :term => "#{artist.name} #{name}",
       :entity=> "song",
       :country => "GB",
       :media => "music",

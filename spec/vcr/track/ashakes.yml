@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ws.spotify.com/search/1/track?q=%2BAlabama%20Shakes%20%2BHold%20on%20NOT%20karaoke
+    uri: http://ws.spotify.com/search/1/track?q=Alabama%20Shakes%20Hold%20On%20NOT%20karaoke
     body:
       encoding: US-ASCII
       string: ''
@@ -15,25 +15,25 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Thu, 12 Jul 2012 15:55:31 GMT
+      - Thu, 26 Jul 2012 18:35:18 GMT
       server:
       - lighttpd/1.4.19 smisk/1.1.6
       content-type:
       - application/json; charset=utf-8
       content-location:
-      - /search/1/track.json?q=%2BAlabama%20Shakes%20%2BHold%20on%20NOT%20karaoke
+      - /search/1/track.json?q=Alabama%20Shakes%20Hold%20On%20NOT%20karaoke
       vary:
       - Accept-Charset,Accept
       expires:
-      - Fri, 13 Jul 2012 15:55:31 GMT
+      - Fri, 27 Jul 2012 18:21:02 GMT
       last-modified:
-      - Tue, 10 Jul 2012 15:39:25 GMT
+      - Wed, 25 Jul 2012 15:46:25 GMT
       content-length:
-      - '3918'
+      - '3916'
       x-varnish:
-      - '1942541005'
+      - 1988169009 1988119433
       age:
-      - '0'
+      - '856'
       via:
       - 1.1 varnish
       access-control-allow-origin:
@@ -42,16 +42,16 @@ http_interactions:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{"info": {"num_results": 6, "limit": 100, "offset": 0, "query": "+Alabama
-        Shakes +Hold on NOT karaoke", "type": "track", "page": 1}, "tracks": [{"album":
+      string: ! '{"info": {"num_results": 6, "limit": 100, "offset": 0, "query": "Alabama
+        Shakes Hold On NOT karaoke", "type": "track", "page": 1}, "tracks": [{"album":
         {"released": "2012", "href": "spotify:album:4T5HcyeH1iwJezAZdgrhw0", "name":
         "Hold On", "availability": {"territories": "US"}}, "name": "Hold On", "popularity":
-        "0.70293", "external-ids": [{"type": "isrc", "id": "USATO1200067"}], "length":
+        "0.70349", "external-ids": [{"type": "isrc", "id": "USATO1200067"}], "length":
         229.453, "href": "spotify:track:7c13Xlndg43PnSzpHRD11d", "artists": [{"href":
         "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}], "track-number":
         "1"}, {"album": {"released": "2012", "href": "spotify:album:08ganBQBnRuCWcpkAwZ4IS",
         "name": "Boys & Girls", "availability": {"territories": "US"}}, "name": "Hold
-        On", "popularity": "0.67705", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
+        On", "popularity": "0.67099", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
         "length": 226.186, "href": "spotify:track:0LcBTwZ84PAZKMDPjeEglx", "artists":
         [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
         "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:7pVZWR612HixnZICqq4XIX",
@@ -64,7 +64,7 @@ http_interactions:
         MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PG PH PK PL PM PT PY QA
         RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC
         TD TG TH TJ TK TM TN TR TV TW TZ UA UG UY UZ VA VC VE VG VN VU WF WS ZA ZM
-        ZW ZZ"}}, "name": "Hold On", "popularity": "0.63566", "external-ids": [{"type":
+        ZW ZZ"}}, "name": "Hold On", "popularity": "0.63280", "external-ids": [{"type":
         "isrc", "id": "USATO1200017"}], "length": 226.0, "href": "spotify:track:5yDGLzX0iyVu51xA7olnME",
         "artists": [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama
         Shakes"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:0YcQyzstsSbcnLCk4h7AUh",
@@ -77,25 +77,25 @@ http_interactions:
         MW MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PG PH PK PL PM PT PY
         QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ
         TC TD TG TH TJ TK TM TN TR TV TW TZ UA UG UY UZ VA VC VE VG VN VU WF WS ZA
-        ZM ZW ZZ"}}, "name": "Hold On", "popularity": "0.64679", "external-ids": [{"type":
+        ZM ZW ZZ"}}, "name": "Hold On", "popularity": "0.65037", "external-ids": [{"type":
         "isrc", "id": "USATO1200017"}], "length": 226.0, "href": "spotify:track:1gGY6qfslDtJ4OoWQGKtkE",
         "artists": [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama
-        Shakes"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:3BqLtntt6yJaS2ZFSUVXbG",
-        "name": "Hold On", "availability": {"territories": "CA"}}, "name": "Hold On",
-        "popularity": "0.09489", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
-        "length": 229.46, "href": "spotify:track:4mi0Ai4QfZdR93iDZIQpVI", "artists":
-        [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
-        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:2G9ntyxiHbD6yK9RxaB7Cy",
+        Shakes"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:2G9ntyxiHbD6yK9RxaB7Cy",
         "name": "Boys & Girls", "availability": {"territories": "CA"}}, "name": "Hold
-        On", "popularity": "0.07024", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
+        On", "popularity": "0.08905", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
         "length": 229.46, "href": "spotify:track:60kEbEbxKPyuLGJaONFAPU", "artists":
+        [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
+        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:3BqLtntt6yJaS2ZFSUVXbG",
+        "name": "Hold On", "availability": {"territories": "CA"}}, "name": "Hold On",
+        "popularity": "0.07603", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
+        "length": 229.46, "href": "spotify:track:4mi0Ai4QfZdR93iDZIQpVI", "artists":
         [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
         "track-number": "1"}]}'
     http_version: '1.1'
-  recorded_at: Thu, 12 Jul 2012 15:55:31 GMT
+  recorded_at: Thu, 26 Jul 2012 18:35:18 GMT
 - request:
     method: get
-    uri: http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20on&entity=song&country=GB&media=music&limit=1
+    uri: http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20On&entity=song&country=GB&media=music&limit=1
     body:
       encoding: US-ASCII
       string: ''
@@ -106,28 +106,28 @@ http_interactions:
       message: OK
     headers:
       x-apple-timing-app:
-      - 49 ms
+      - 74 ms
       x-apple-orig-url-path:
-      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20on&entity=song&country=GB&media=music&limit=1
+      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20On&entity=song&country=GB&media=music&limit=1
       x-apple-translated-wo-url:
-      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20on&entity=song&country=GB&media=music&limit=1
+      - /WebObjects/MZStoreServices.woa/wa/wsSearch?term=Alabama%20Shakes%20Hold%20On&entity=song&country=GB&media=music&limit=1
       x-apple-application-site:
-      - NWK
+      - ST11
       x-apple-max-age:
       - '3600'
       content-type:
       - text/javascript; charset=utf-8
       x-apple-application-instance:
-      - '3020005'
+      - '2087003'
       x-webobjects-loadaverage:
       - '0'
       vary:
       - X-Apple-Store-Front
       - X-Apple-Store-Front
       cache-control:
-      - no-transform, max-age=51
+      - no-transform, max-age=60
       date:
-      - Thu, 12 Jul 2012 15:55:31 GMT
+      - Thu, 26 Jul 2012 18:35:19 GMT
       content-length:
       - '1275'
       connection:
@@ -152,98 +152,5 @@ http_interactions:
         \"discCount\":1, \"discNumber\":1, \"trackCount\":12, \"trackNumber\":1, \"trackTimeMillis\":226187,
         \"country\":\"GBR\", \"currency\":\"GBP\", \"primaryGenreName\":\"Alternative\"}]\n}\n\n\n"
     http_version: '1.1'
-  recorded_at: Thu, 12 Jul 2012 15:55:31 GMT
-- request:
-    method: get
-    uri: http://ws.spotify.com/search/1/track?q=Alabama%20Shakes%20Hold%20on%20NOT%20karaoke
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      accept:
-      - application/json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      date:
-      - Fri, 13 Jul 2012 12:32:59 GMT
-      server:
-      - lighttpd/1.4.19 smisk/1.1.6
-      content-type:
-      - application/json; charset=utf-8
-      content-location:
-      - /search/1/track.json?q=Alabama%20Shakes%20Hold%20on%20NOT%20karaoke
-      vary:
-      - Accept-Charset,Accept
-      expires:
-      - Sat, 14 Jul 2012 12:32:59 GMT
-      last-modified:
-      - Tue, 10 Jul 2012 15:39:25 GMT
-      content-length:
-      - '3916'
-      x-varnish:
-      - '1945144886'
-      age:
-      - '0'
-      via:
-      - 1.1 varnish
-      access-control-allow-origin:
-      - ! '*'
-      connection:
-      - close
-    body:
-      encoding: US-ASCII
-      string: ! '{"info": {"num_results": 6, "limit": 100, "offset": 0, "query": "Alabama
-        Shakes Hold on NOT karaoke", "type": "track", "page": 1}, "tracks": [{"album":
-        {"released": "2012", "href": "spotify:album:4T5HcyeH1iwJezAZdgrhw0", "name":
-        "Hold On", "availability": {"territories": "US"}}, "name": "Hold On", "popularity":
-        "0.70293", "external-ids": [{"type": "isrc", "id": "USATO1200067"}], "length":
-        229.453, "href": "spotify:track:7c13Xlndg43PnSzpHRD11d", "artists": [{"href":
-        "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}], "track-number":
-        "1"}, {"album": {"released": "2012", "href": "spotify:album:08ganBQBnRuCWcpkAwZ4IS",
-        "name": "Boys & Girls", "availability": {"territories": "US"}}, "name": "Hold
-        On", "popularity": "0.67705", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
-        "length": 226.186, "href": "spotify:track:0LcBTwZ84PAZKMDPjeEglx", "artists":
-        [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
-        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:7pVZWR612HixnZICqq4XIX",
-        "name": "Hold On", "availability": {"territories": "AD AE AF AG AL AM AN AO
-        AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BO BR BS BT BW BY BZ CC CD
-        CF CG CH CL CM CN CO CR CU CX CY CZ DE DJ DK DM DO DZ EC EE EG ER ES ET FI
-        FJ FK FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GT GW GY HK HM HN HR
-        HT HU ID IE IL IM IN IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY
-        KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MK ML MN MO MQ MT MV MW
-        MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PG PH PK PL PM PT PY QA
-        RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC
-        TD TG TH TJ TK TM TN TR TV TW TZ UA UG UY UZ VA VC VE VG VN VU WF WS ZA ZM
-        ZW ZZ"}}, "name": "Hold On", "popularity": "0.63566", "external-ids": [{"type":
-        "isrc", "id": "USATO1200017"}], "length": 226.0, "href": "spotify:track:5yDGLzX0iyVu51xA7olnME",
-        "artists": [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama
-        Shakes"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:0YcQyzstsSbcnLCk4h7AUh",
-        "name": "Boys & Girls", "availability": {"territories": "AD AE AF AG AL AM
-        AN AO AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BO BR BS BT BW BY BZ
-        CC CD CF CG CH CL CM CN CO CR CU CX CY CZ DE DJ DK DM DO DZ EC EE EG ER ES
-        ET FI FJ FK FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GT GW GY HK HM
-        HN HR HT HU ID IE IL IM IN IQ IR IS IT JE JM JO KE KG KH KI KM KN KP KR KW
-        KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MK ML MN MO MQ MT MV
-        MW MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PG PH PK PL PM PT PY
-        QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ
-        TC TD TG TH TJ TK TM TN TR TV TW TZ UA UG UY UZ VA VC VE VG VN VU WF WS ZA
-        ZM ZW ZZ"}}, "name": "Hold On", "popularity": "0.64679", "external-ids": [{"type":
-        "isrc", "id": "USATO1200017"}], "length": 226.0, "href": "spotify:track:1gGY6qfslDtJ4OoWQGKtkE",
-        "artists": [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama
-        Shakes"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:3BqLtntt6yJaS2ZFSUVXbG",
-        "name": "Hold On", "availability": {"territories": "CA"}}, "name": "Hold On",
-        "popularity": "0.09489", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
-        "length": 229.46, "href": "spotify:track:4mi0Ai4QfZdR93iDZIQpVI", "artists":
-        [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
-        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:2G9ntyxiHbD6yK9RxaB7Cy",
-        "name": "Boys & Girls", "availability": {"territories": "CA"}}, "name": "Hold
-        On", "popularity": "0.07024", "external-ids": [{"type": "isrc", "id": "USATO1200017"}],
-        "length": 229.46, "href": "spotify:track:60kEbEbxKPyuLGJaONFAPU", "artists":
-        [{"href": "spotify:artist:16GcWuvvybAoaHr0NqT8Eh", "name": "Alabama Shakes"}],
-        "track-number": "1"}]}'
-    http_version: '1.1'
-  recorded_at: Fri, 13 Jul 2012 12:32:59 GMT
+  recorded_at: Thu, 26 Jul 2012 18:35:19 GMT
 recorded_with: VCR 2.2.3

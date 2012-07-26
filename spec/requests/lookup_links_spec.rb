@@ -14,8 +14,8 @@ describe "Looking up links" do
     describe "should return a link for a track that's available in the UK" do
       before do
         VCR.use_cassette("track/codex", :record => :new_episodes) do  
-          fill_in 'interest[artist_attributes][name]', with: "Radiohead"
-          fill_in 'interest[track_attributes][name]',   with: "Codex"
+          fill_in 'interest[artist_name]',  with: "Radiohead"
+          fill_in 'interest[track_name]',   with: "Codex"
           click_button "Track this!"
         end
       end
@@ -25,8 +25,8 @@ describe "Looking up links" do
       describe "even if the first track returned is not available in the UK" do
         before do
           VCR.use_cassette("track/ashakes", :record => :new_episodes) do
-            fill_in 'interest[artist_attributes][name]', with: "Alabama Shakes"
-            fill_in 'interest[track_attributes][name]',   with: "Hold on"
+            fill_in 'interest[artist_name]',  with: "Alabama Shakes"
+            fill_in 'interest[track_name]',   with: "Hold on"
             click_button "Track this!"
           end
         end
@@ -37,8 +37,8 @@ describe "Looking up links" do
     describe "should not return a link for a track that's not available in the UK" do
       before do
         VCR.use_cassette("track/atdi", :record => :new_episodes) do
-          fill_in 'interest[artist_attributes][name]', with: "At the Drive-in"
-          fill_in 'interest[track_attributes][name]',   with: "One armed scissor"
+          fill_in 'interest[artist_name]',  with: "At the Drive-in"
+          fill_in 'interest[track_name]',   with: "One armed scissor"
           click_button "Track this!"
         end
       end
@@ -63,8 +63,8 @@ describe "Looking up links" do
     describe "should return a track that's available on iTunes" do
       before do
         VCR.use_cassette("track/codex", :record => :new_episodes) do  
-          fill_in 'interest[artist_attributes][name]', with: "Radiohead"
-          fill_in 'interest[track_attributes][name]',   with: "Codex"
+          fill_in 'interest[artist_name]',  with: "Radiohead"
+          fill_in 'interest[track_name]',   with: "Codex"
           click_button "Track this!"
         end
       end
@@ -74,8 +74,8 @@ describe "Looking up links" do
     describe "should not return a track that's not available on iTunes" do
       before do
         VCR.use_cassette("track/blah", :record => :new_episodes) do  
-          fill_in 'interest[artist_attributes][name]', with: "asdfghjkl"
-          fill_in 'interest[track_attributes][name]',   with: "qwertyuiop"
+          fill_in 'interest[artist_name]',  with: "asdfghjkl"
+          fill_in 'interest[track_name]',   with: "qwertyuiop"
           click_button "Track this!"
         end
       end
@@ -93,6 +93,5 @@ describe "Looking up links" do
 #      end
 #        it { should_not have_link("iTunes") }
     end
-    
   end
 end
