@@ -39,7 +39,7 @@ class Users::InterestsController < ApplicationController
 
   def load_index_data
     @user      = User.find(params[:user_id])
-    @interests = @user.interests.paginate(page: params[:page])
+    @interests = @user.interests.where(:type => "TrackInterest").paginate(page: params[:page])
   end
 
 end
