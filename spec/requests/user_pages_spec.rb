@@ -52,8 +52,8 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user)  { FactoryGirl.create(:user) }
-    let!(:m1)   { FactoryGirl.create(:track, artist: "Foo", name: "Bar") }
-    let!(:m2)   { FactoryGirl.create(:track, artist: "Bar", name: "Foo") }
+    let!(:m1)   { FactoryGirl.create(:track, artist: Factory(:artist), name: "Bar") }
+    let!(:m2)   { FactoryGirl.create(:track, artist: Factory(:artist), name: "Foo") }
 
     before { visit user_path(user) }
 

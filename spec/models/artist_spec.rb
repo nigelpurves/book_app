@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Artist do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @artist = user.artists.build(name: "Radiohead") }
+  before { @artist = FactoryGirl.create(:artist) }
 
   subject { @artist }
 
