@@ -3,13 +3,13 @@ class RemoveArtistColumnFromTracks < ActiveRecord::Migration
     rename_column :tracks, :artist, :old_artist_name
 
     Track.reset_column_information
-    Track.each do |track|
+    Track.all.each do |track|
       artist = Artist.find_or_create_by_name(track.old_artist_name)
       track.artist = artist
       track.save!
     end
 
-    remove_column(:tracks, :artist)
+    remove_column(:tracks, :old_artist_name)
   end
 
   def down

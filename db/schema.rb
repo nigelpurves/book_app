@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20120726193221) do
     t.integer  "artist_id"
   end
 
+  add_index "tracks", ["created_at"], :name => "index_tracks_on_created_at"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
