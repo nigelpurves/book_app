@@ -30,7 +30,7 @@
 						<h3>Who else is tracking this?</h3>
 					</td>
 				</tr>
-				<tr><%= render :partial => 'interest', :collection => @interests, :as => :interest %></tr>
+				<tr><%= render :partial => 'users/interests/interest', :collection => @interests, :as => :interest %></tr>
 	    </table>
 		<%= will_paginate @interests %>
 	  <% end %>
