@@ -7,6 +7,9 @@ describe TrackerController do
     @invalid_params = {}
     @tokenless_user = Factory.create(:user)
     @user           = Factory.create(:user, :bookmarklet_token => "valid")
+
+    # do not lookup links. stubbing this here smells badly.
+    Track.any_instance.stub(:lookup_links)
   end
 
   describe "new on the tracker without a valid user token" do

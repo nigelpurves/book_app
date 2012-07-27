@@ -1,12 +1,12 @@
 class Interest < ActiveRecord::Base
   belongs_to :user
+  belongs_to :artist
   belongs_to :track
 
-  accepts_nested_attributes_for :track
+  attr_accessor :artist_name, :track_name
 
-  attr_accessible :track_attributes, :source, :url
+  attr_accessible :source, :url, :artist_name, :track_name
 
-  # validates :track_id, presence: true     DO NOT UNCOMMENT, BREAKS EVERYTHING!
   validates :user, presence: true
 
   default_scope order: 'interests.created_at DESC'
@@ -20,8 +20,34 @@ class Interest < ActiveRecord::Base
     self.track.interests.count == self.position
   end
 
-  def track_attributes=(attrs)
-    self.track = Track.where(attrs).first_or_initialize
+  def self.build_track_interest(track_name, artist_name)
+    track_record = Track.joins(:artist).where(name: track_name, :artists => {name: artist_name}).first
+    if track_record.nil?
+      artist_record = Artist.find_by_name(:artist_name)
+      if artist_record.nil?
+        artist_record = Artist.create(name: artist_name)
+      end
+      track_record = Track.new(name: track_name, artist: artist_record)
+      track_record.lookup_links
+      track_record.save
+    end
+    TrackInterest.new(track: track_record)
+  end
+
+  def self.build_artist_interest(artist_name)
+    artist_record = Artist.find_by_name(:artist_name)
+    if artist_record.nil?
+      artist_record = Artist.create(name: artist_name)
+    end
+    ArtistInterest.new(artist: artist_record)
+  end
+
+  def self.build_interest(track_name, artist_name)
+    if track_name.nil? || track_name.empty?
+      self.build_artist_interest(artist_name)
+    else
+      self.build_track_interest(track_name, artist_name)
+    end
   end
 
 end# == Schema Information
@@ -36,4 +62,3 @@ end# == Schema Information
 #  source     :string(255)
 #  url        :string(255)
 #
-

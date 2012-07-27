@@ -2,18 +2,20 @@ require 'spotify'
 
 class Track < ActiveRecord::Base
 
-  attr_accessible :artist, :name
+  attr_accessible :name, :artist
   has_many :interests
   has_many :users, through: :interests
+  belongs_to :artist
 
-  validates :artist, presence: true, length: {maximum: 140}
+  accepts_nested_attributes_for :artist
+
+  validates :artist, presence: true
   validates :name, presence: true, length: {maximum: 140}
 
   before_create :titlecase_name
 
 
   def titlecase_name
-    self.artist = self.artist.titleize
     self.name   = self.name.titleize
   end
 
@@ -23,8 +25,7 @@ class Track < ActiveRecord::Base
   end
 
   def lookup_spotify_link
-    spotify_info = Spotify.search_track("#{artist} #{name} NOT karaoke")
-
+    spotify_info = Spotify.search_track("#{artist.name} #{name} NOT karaoke")
     unless spotify_info.nil?
       spotify_available = spotify_info.select { |track| track.album.availability['territories'].split(" ").include? "GB" }.first
 
@@ -37,8 +38,8 @@ class Track < ActiveRecord::Base
 
   def lookup_itunes_link
     itunes_info = ITunesSearchAPI.search(
-      :term    => "#{artist} #{name}",
-      :entity  => "song",
+      :term => "#{artist.name} #{name}",
+      :entity=> "song",
       :country => "GB",
       :media   => "music",
       :limit   => "1"

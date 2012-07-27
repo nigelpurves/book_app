@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:interests) }
   it { should respond_to(:tracks) }
+  it { should respond_to(:artists) }
   
   it { should be_valid }
   it { should_not be_admin }

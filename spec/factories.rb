@@ -9,9 +9,13 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :artist do
+    name "Radiohead"
+  end
   
-  factory :track do
-    artist "Radiohead"
+  factory :track do |f|
+    f.association :artist
     name "Codex"
   end
   

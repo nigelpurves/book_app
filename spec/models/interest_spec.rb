@@ -12,10 +12,11 @@ describe Interest do
   subject { interest }
 
   it { should respond_to(:track_id) }
+  it { should respond_to(:artist_id) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   its(:user) { should == user }
-  
+
   # it { should be_valid }
   it { puts interest.errors.full_messages }
 
@@ -44,4 +45,3 @@ end
 #  source     :string(255)
 #  url        :string(255)
 #
-

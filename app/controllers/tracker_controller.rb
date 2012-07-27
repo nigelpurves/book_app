@@ -1,9 +1,13 @@
 class TrackerController < ApplicationController
 
   before_filter :find_user_by_token
+  before_filter :check_params
 
   def new
-    interest = @user.interests.build(build_attributes)
+    interest = Interest.build_interest(params[:trackname], params[:artist])
+    interest.user = @user
+    interest.attributes= {:source => params[:source], :url => params[:href]}
+
     if interest.save
       pad_with_callback JSON.generate({:message => "Thank you!", :response_code => 200})
     else
@@ -20,13 +24,16 @@ class TrackerController < ApplicationController
     end
   end
 
-  def build_attributes
-    {:source => params[:source], :url => params[:href], :track_attributes => {:artist => params[:artist], :name => params[:trackname]}}
-  end
-
   def pad_with_callback body
     callback = params[:callback] || "qusic_callback"
     render :js => "#{callback}(#{body})"
+  end
+
+  def check_params
+    artist = params[:artist]
+    if artist.nil? || artist.empty?
+      pad_with_callback JSON.generate({:error => "Invalid parameters!", :response_code => 400})
+    end
   end
 
 
