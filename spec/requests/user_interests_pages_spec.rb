@@ -30,8 +30,8 @@ describe "UserInterestsPages" do
 
       describe "should create a track" do
 
-        before  { fill_in 'interest_params[artist_name]',  with: "Lorem Ipsum" }
-        before  { fill_in 'interest_params[track_name]',     with: "Lorem Ipsum" }
+        before  { fill_in 'interest_params[artist_name]',  with: "Adam Artist" }
+        before  { fill_in 'interest_params[track_name]',     with: "Massive Tune" }
 
         it "interest" do
           expect { click_button "Track this!" }.should change(Interest, :count).by(1)
@@ -39,6 +39,18 @@ describe "UserInterestsPages" do
 
         it "record" do
           expect { click_button "Track this!" }.should change(Track, :count).by(1)
+        end
+      end
+      
+      describe "should render an index of" do
+
+        before  { fill_in 'interest_params[artist_name]',  with: "Adam Artist" }
+        before  { fill_in 'interest_params[track_name]',     with: "Massive Tune" }
+        before { click_button "Track this!" }
+        
+        it  "track interests" do
+          page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Adam Artist")
+          page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Massive Tune")
         end
       end
 
@@ -52,6 +64,16 @@ describe "UserInterestsPages" do
 
         it "record" do
           expect { click_button "Track this!" }.should change(Artist, :count).by(1)
+        end
+      end
+      
+      describe "should render an index of" do
+
+        before  { fill_in 'interest_params[artist_name]',  with: "Adam Artist" }
+        before { click_button "Track this!" }
+        
+        it  "artist interests" do
+          page.should have_selector("table.artistinterests tr:nth-child(1)", content: "Adam Artist")
         end
       end
     end

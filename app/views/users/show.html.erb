@@ -5,6 +5,13 @@
       <%= render 'shared/user_info' %>
     </section>
   </aside>
+	<div class="span6 offset2">
+		<h3>Artists</h3>
+		<br />
+		<table class="table table-striped">
+			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
+		</table>
+	</div>
 </div>
 <div class="row">
 	<div class="span12 hometracks">
@@ -30,9 +37,9 @@
 						<h3>Who else is tracking this?</h3>
 					</td>
 				</tr>
-				<tr><%= render :partial => 'users/interests/interest', :collection => @interests, :as => :interest %></tr>
+				<tr><%= render :partial => 'users/interests/track_interest', :collection => @track_interests, :as => :track_interest %></tr>
 	    </table>
-		<%= will_paginate @interests %>
+		<%= will_paginate @track_interests %>
 	  <% end %>
 	</div>
 </div>

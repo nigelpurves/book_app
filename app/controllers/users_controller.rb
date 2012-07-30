@@ -5,9 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @interest = @user.interests.build
-    @interest.build_track
-    @interests = @user.interests.paginate(page: params[:page])
+    load_interest_data
   end
 
   def new
@@ -48,6 +46,8 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed."
     redirect_to root_path
   end
+  
+
 
   private
 
@@ -65,5 +65,10 @@ class UsersController < ApplicationController
 
     def admin_user
       not_found unless current_user.admin?
+    end
+    
+    def load_interest_data
+      @track_interests = @user.interests.where(:type => "TrackInterest").paginate(page: params[:page])
+      @artist_interests = @user.interests.where(:type => "ArtistInterest")
     end
 end

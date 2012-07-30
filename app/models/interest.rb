@@ -11,14 +11,7 @@ class Interest < ActiveRecord::Base
 
   default_scope order: 'interests.created_at DESC'
   scope :reverse_order, order('created_at ASC')
-
-  def position
-    self.track.interests.reverse_order.index(self) + 1
-  end
-
-  def is_last_interest?
-    self.track.interests.count == self.position
-  end
+  
 
   def self.build_track_interest(track_name, artist_name)
     track_record = Track.joins(:artist).where(name: track_name, :artists => {name: artist_name}).first

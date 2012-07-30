@@ -8,6 +8,13 @@
       <%= render 'shared/track_form' %>
     </section>
   </aside>
+	<div class="span6 offset2">
+		<h3>Artists</h3>
+		<br />
+		<table class="table table-striped artistinterests">
+			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
+		</table>
+	</div>
 </div>
 <div class="row">
   <div class="span12 hometracks">
@@ -15,7 +22,7 @@
       <br/>
       <h3>Tracks (<%= @user.tracks.count %>)</h3>
       <br/>
-      <table class="table table-striped">
+      <table class="table table-striped trackinterests">
         <tr>
           <td class="track">
             <h3>Artist</h3>
@@ -33,9 +40,9 @@
             <h3>Who else is tracking this?</h3>
           </td>
         </tr>
-        <tr><%= render :partial => 'interest', :collection => @interests, :as => :interest %></tr>
+        <tr><%= render :partial => 'track_interest', :collection => @track_interests, :as => :track_interest %></tr>
       </table>
-      <%= will_paginate @interests %>
+      <%= will_paginate @track_interests %>
     <% end %>
   </div>
 </div>

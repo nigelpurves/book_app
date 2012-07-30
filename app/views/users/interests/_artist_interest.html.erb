@@ -1,0 +1,9 @@
+<tr>
+  <td><%= artist_interest.name %></td>
+  <td><%= time_ago_in_words(artist_interest.created_at) %></td>
+  <td>
+    <% if current_user?(artist_interest.user) %>
+      <%= link_to "delete", user_interest_path(artist_interest.user, artist_interest), method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
+  </td>
+</tr>
