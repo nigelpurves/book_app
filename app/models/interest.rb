@@ -3,9 +3,7 @@ class Interest < ActiveRecord::Base
   belongs_to :artist
   belongs_to :track
 
-  attr_accessor :artist_name, :track_name
-
-  attr_accessible :source, :url, :artist_name, :track_name
+  attr_accessible :source, :url
 
   validates :user, presence: true
 
