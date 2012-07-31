@@ -1,5 +1,5 @@
 <tr>
-  <td class="name"><%= artist_interest.name %></td>
+  <td class="name"><%= artist_interest.name.titlecase %></td>
   <td class="time"><%= time_ago_in_words(artist_interest.created_at) %></td>
   <td class="actions">
     <% if current_user?(artist_interest.user) %>

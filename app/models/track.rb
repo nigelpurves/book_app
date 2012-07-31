@@ -12,13 +12,6 @@ class Track < ActiveRecord::Base
   validates :artist, presence: true
   validates :name, presence: true, length: {maximum: 140}
 
-  before_create :titlecase_name
-
-
-  def titlecase_name
-    self.name   = self.name.titleize
-  end
-
   def lookup_links
     lookup_spotify_link
     lookup_itunes_link

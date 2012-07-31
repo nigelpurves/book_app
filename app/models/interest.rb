@@ -14,9 +14,9 @@ class Interest < ActiveRecord::Base
   
 
   def self.build_track_interest(track_name, artist_name)
-    track_record = Track.joins(:artist).where(name: track_name, :artists => {name: artist_name}).first
+    track_record = Track.joins(:artist).where('lower("tracks"."name") = ? AND lower("artists"."name") = ?', track_name.downcase, artist_name.downcase).first
     if track_record.nil?
-      artist_record = Artist.find_by_name(:artist_name)
+      artist_record = Artist.find(:first, :conditions => ['lower("artists"."name") = ?', artist_name.downcase])
       if artist_record.nil?
         artist_record = Artist.create(name: artist_name)
       end
@@ -28,7 +28,7 @@ class Interest < ActiveRecord::Base
   end
 
   def self.build_artist_interest(artist_name)
-    artist_record = Artist.find_by_name(:artist_name)
+    artist_record = Artist.find(:first, :conditions => ['lower("artists"."name") = ?', artist_name.downcase])
     if artist_record.nil?
       artist_record = Artist.create(name: artist_name)
     end

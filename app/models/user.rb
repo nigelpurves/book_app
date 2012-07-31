@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-
   def has_bookmarklet_token?
     self.bookmarklet_token.present?
   end
@@ -26,7 +25,6 @@ class User < ActiveRecord::Base
     create_bookmarklet_token
     self.save!(:validate => false)
   end
-
 
   private
 

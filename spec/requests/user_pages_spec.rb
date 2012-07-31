@@ -79,18 +79,25 @@ describe "User pages" do
 
         it { should have_selector('title', text: user.name) }
     
-        it { page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Adam Artist") }
-        it { page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Massive Tune") }
+        it { page.should have_selector("table.trackintereststable tr", text: "Adam Artist") }
+        it { page.should have_selector("table.trackintereststable tr", text: "Massive Tune") }
       end
       
-      describe "of another user" do
+      describe "of another user only" do
     
-        before {sign_in user2 }
-        before { visit user_path(user) }
-    
-        it { page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Adam Artist") }
-        it { page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Massive Tune") }
+        before  {sign_in user2 }
+        before  { visit user_interests_path(user2) }
+        before  { fill_in 'interest_params[artist_name]', with: "steve singer" }
+        before  { fill_in 'interest_params[track_name]',  with: "big tune" }
+        before  { click_button "Track this!" }
+        before  { visit user_path(user) }
+        
+        it { page.should      have_selector("table.trackintereststable tr", text: "Adam Artist") }
+        it { page.should      have_selector("table.trackintereststable tr", text: "Massive Tune") }
+        it { page.should_not  have_content("Steve") }
+        
       end
+
     end
     
     describe "should render an index of artist interests" do
@@ -106,7 +113,7 @@ describe "User pages" do
         before  { visit user_path(user) }
 
         it { should have_selector('title', text: user.name) }
-        it { page.should have_selector("table.artistintereststable tr:nth-child(1)", content: "Sam Singer") }
+        it { page.should have_selector("table.artistintereststable tr", text: "Sam Singer") }
         
       end
       
@@ -115,7 +122,7 @@ describe "User pages" do
         before {sign_in user2 }
         before { visit user_path(user) }
     
-        it { page.should have_selector("table.artistintereststable tr:nth-child(1)", content: "Sam Singer") }
+        it { page.should have_selector("table.artistintereststable tr", text: "Sam Singer") }
         
       end
     end

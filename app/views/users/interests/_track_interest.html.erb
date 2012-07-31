@@ -1,6 +1,6 @@
 <tr>
-  <td><%= track_interest.artist_name %></td>
-  <td><%= track_interest.name %></td>
+  <td><%= track_interest.artist_name.titlecase %></td>
+  <td><%= track_interest.name.titlecase %></td>
   <td><%= time_ago_in_words(track_interest.created_at) %></td>
   <td class="track">
     <span class="itunes">
