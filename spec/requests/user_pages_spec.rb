@@ -52,22 +52,74 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user)  { FactoryGirl.create(:user) }
-    let!(:m1)   { FactoryGirl.create(:track, artist: Factory(:artist), name: "Bar") }
-    let!(:m2)   { FactoryGirl.create(:track, artist: Factory(:artist), name: "Foo") }
+    let(:user2) { FactoryGirl.create(:user) }
+    
+    before { sign_in user }
+    
+#    let(:artist) { FactoryGirl.create(:artist, name: "Adam Artist") }
+#    let(:track) { FactoryGirl.create(:track, name: "Massive Tune") }
+#    let(:interest) { FactoryGirl.create(:interest, user: user, track: track) }
 
-    before { visit user_path(user) }
+    before do
+      Track.any_instance.stub(:lookup_links)
+    end
+    
+    describe "should render an index of track interests" do
+    
+      before do 
+        visit user_interests_path(user)
+        fill_in 'interest_params[artist_name]',  with: "Adam Artist"
+        fill_in 'interest_params[track_name]',   with: "Massive Tune"
+        click_button "Track this!"
+      end
+    
+      describe "of the current user" do
+    
+        before  { visit user_path(user) }
 
-    # it { should have_selector("h1") }
-    it { should have_selector('title', text: user.name) }
+        it { should have_selector('title', text: user.name) }
+    
+        it { page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Adam Artist") }
+        it { page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Massive Tune") }
+      end
+      
+      describe "of another user" do
+    
+        before {sign_in user2 }
+        before { visit user_path(user) }
+    
+        it { page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Adam Artist") }
+        it { page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Massive Tune") }
+      end
+    end
+    
+    describe "should render an index of artist interests" do
+    
+      before do 
+        visit user_interests_path(user)
+        fill_in 'interest_params[artist_name]',  with: "Sam Singer"
+        click_button "Track this!"
+      end
+    
+      describe "of the current user" do
+    
+        before  { visit user_path(user) }
 
-    # describe "tracks" do
-      # it { should have_content(m1.artist) }
-      # it { should have_content(m2.artist) }
-      # it { should have_content(m1.name) }
-      # it { should have_content(m2.name) }
-
-      # it { should have_content(user.tracks.count) }
-    # end
+        it { should have_selector('title', text: user.name) }
+        it { page.should have_selector("table.artistinterests tr:nth-child(1)", content: "Sam Singer") }
+        
+      end
+      
+      describe "of another user" do
+    
+        before {sign_in user2 }
+        before { visit user_path(user) }
+    
+        it { page.should have_selector("table.artistinterests tr:nth-child(1)", content: "Sam Singer") }
+        
+      end
+    end
+    
   end
 
   describe "signup page" do

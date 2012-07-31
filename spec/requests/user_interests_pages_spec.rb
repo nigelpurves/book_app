@@ -46,7 +46,7 @@ describe "UserInterestsPages" do
 
         before  { fill_in 'interest_params[artist_name]',  with: "Adam Artist" }
         before  { fill_in 'interest_params[track_name]',     with: "Massive Tune" }
-        before { click_button "Track this!" }
+        before  { click_button "Track this!" }
         
         it  "track interests" do
           page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Adam Artist")
