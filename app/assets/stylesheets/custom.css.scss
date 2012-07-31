@@ -218,12 +218,34 @@ aside {
   }
 }
 
+.artistinterests {
+		margin-top: 60px;
+		table { 
+			display: block;
+			max-height: 150px;
+			overflow-y: auto;
+			td.name { 
+				width: 50%;
+			}
+			td.time {
+				width: 30%;
+			}
+			td.actions {
+				width: 10%;
+			}
+		}
+}
+
 .delete {
 	table: unstyled;
 }
 
-hometracks {
-	margin-top: 30px;
+.trackinterests {
+	margin-top: 0px;
+	
+	table {
+		margin-top: 15px;
+	}
 }
 
 .userinfo {

@@ -49,8 +49,8 @@ describe "UserInterestsPages" do
         before  { click_button "Track this!" }
         
         it  "track interests" do
-          page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Adam Artist")
-          page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Massive Tune")
+          page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Adam Artist")
+          page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Massive Tune")
         end
       end
 
@@ -73,7 +73,7 @@ describe "UserInterestsPages" do
         before { click_button "Track this!" }
         
         it  "artist interests" do
-          page.should have_selector("table.artistinterests tr:nth-child(1)", content: "Adam Artist")
+          page.should have_selector("table.artistintereststable tr:nth-child(1)", content: "Adam Artist")
         end
       end
     end

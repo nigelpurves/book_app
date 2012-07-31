@@ -79,8 +79,8 @@ describe "User pages" do
 
         it { should have_selector('title', text: user.name) }
     
-        it { page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Adam Artist") }
-        it { page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Massive Tune") }
+        it { page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Adam Artist") }
+        it { page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Massive Tune") }
       end
       
       describe "of another user" do
@@ -88,8 +88,8 @@ describe "User pages" do
         before {sign_in user2 }
         before { visit user_path(user) }
     
-        it { page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Adam Artist") }
-        it { page.should have_selector("table.trackinterests tr:nth-child(1)", content: "Massive Tune") }
+        it { page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Adam Artist") }
+        it { page.should have_selector("table.trackintereststable tr:nth-child(1)", content: "Massive Tune") }
       end
     end
     
@@ -106,7 +106,7 @@ describe "User pages" do
         before  { visit user_path(user) }
 
         it { should have_selector('title', text: user.name) }
-        it { page.should have_selector("table.artistinterests tr:nth-child(1)", content: "Sam Singer") }
+        it { page.should have_selector("table.artistintereststable tr:nth-child(1)", content: "Sam Singer") }
         
       end
       
@@ -115,7 +115,7 @@ describe "User pages" do
         before {sign_in user2 }
         before { visit user_path(user) }
     
-        it { page.should have_selector("table.artistinterests tr:nth-child(1)", content: "Sam Singer") }
+        it { page.should have_selector("table.artistintereststable tr:nth-child(1)", content: "Sam Singer") }
         
       end
     end

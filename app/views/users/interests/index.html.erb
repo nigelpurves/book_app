@@ -4,25 +4,24 @@
     <section class="userinfo">
       <%= render 'shared/user_info' %>
     </section>
-    <section>
-      <%= render 'shared/track_form' %>
-    </section>
+		<div class="row">
+    	<section>
+      	<%= render 'shared/track_form' %>
+    	</section>
   </aside>
-	<div class="span6 offset2">
+	<div class="span6 offset2 artistinterests">
 		<h3>Artists</h3>
 		<br />
-		<table class="table table-striped artistinterests">
+		<table class="table table-striped artistintereststable">
 			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
 		</table>
 	</div>
 </div>
 <div class="row">
-  <div class="span12 hometracks">
+  <div class="span12 trackinterests">
     <% if @user.tracks.any? %>
-      <br/>
       <h3>Tracks (<%= @user.tracks.count %>)</h3>
-      <br/>
-      <table class="table table-striped trackinterests">
+      <table class="table table-striped trackintereststable">
         <tr>
           <td class="track">
             <h3>Artist</h3>
