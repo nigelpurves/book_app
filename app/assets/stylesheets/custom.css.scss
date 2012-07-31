@@ -225,13 +225,16 @@ aside {
 			max-height: 150px;
 			overflow-y: auto;
 			td.name { 
-				width: 50%;
-			}
-			td.time {
 				width: 30%;
 			}
+			td.time {
+				width: 15%;
+			}
+			td.coolnessranking {
+				width: 40%;
+			}
 			td.actions {
-				width: 10%;
+				width: 5%;
 			}
 		}
 }

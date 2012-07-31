@@ -68,8 +68,8 @@ describe "User pages" do
     
       before do 
         visit user_interests_path(user)
-        fill_in 'interest_params[artist_name]',  with: "Adam Artist"
-        fill_in 'interest_params[track_name]',   with: "Massive Tune"
+        fill_in 'interest_params[artist_name]',  with: "adam artist"
+        fill_in 'interest_params[track_name]',   with: "massive tune"
         click_button "Track this!"
       end
     
@@ -104,7 +104,7 @@ describe "User pages" do
     
       before do 
         visit user_interests_path(user)
-        fill_in 'interest_params[artist_name]',  with: "Sam Singer"
+        fill_in 'interest_params[artist_name]',  with: "sam singer"
         click_button "Track this!"
       end
     

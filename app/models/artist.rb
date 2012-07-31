@@ -2,6 +2,7 @@ class Artist < ActiveRecord::Base
   require 'spotify'
   
   attr_accessible :name
+#  has_many :interests
   has_many :artist_interests
   has_many :track_interests, through: :tracks
   has_many :tracks

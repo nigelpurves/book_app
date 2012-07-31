@@ -7,11 +7,11 @@ class TrackInterest < Interest
   validates_presence_of :track
 
   def position
-    self.track.interests.reverse_order.index(self) + 1
+    self.track.track_interests.reverse_order.index(self) + 1
   end
 
   def is_last_interest?
-    self.track.interests.count == self.position
+    self.track.track_interests.count == self.position
   end
   
   def artist_name

@@ -43,17 +43,17 @@ describe "UserInterestsPages" do
         end
       end
       
-      describe "should render an index of" do
+      describe "should render an index of track" do
 
         before  { fill_in 'interest_params[artist_name]', with: "adam artist" }
         before  { fill_in 'interest_params[track_name]',  with: "massive tune" }
         before  { click_button "Track this!" }
         
-        describe  "track interests with titlecases" do
+        describe  "interests with titlecases" do
           it { should have_selector("table.trackintereststable tr", text: "Adam Artist") }
           it { should have_selector("tr", text: "Massive Tune") }
         
-          describe "with the correct user coolness ranking" do
+          describe "interests with the correct user coolness ranking" do
             
             before  { sign_in user2 }
             before  { visit user_interests_path(user2) }
@@ -80,13 +80,24 @@ describe "UserInterestsPages" do
         end
       end
       
-      describe "should render an index of" do
+      describe "should render an index of artist" do
 
-        before  { fill_in 'interest_params[artist_name]',  with: "Sam Singer" }
+        before  { fill_in 'interest_params[artist_name]',  with: "sam singer" }
         before { click_button "Track this!" }
         
-        it  "artist interests" do
-          page.should have_selector("table.artistintereststable tr", text: "Sam Singer")
+        describe  "interests with titlecases" do
+          it { should have_selector("table.artistintereststable tr", text: "Sam Singer") }
+        end
+        
+        describe "interests with the correct user coolness ranking" do
+          
+          before  { sign_in user2 }
+          before  { visit user_interests_path(user2) }
+          before  { fill_in 'interest_params[artist_name]', with: "sam singer" }
+          before  { click_button "Track this!" }
+
+          it { should have_selector("table.artistintereststable tr", text: "2nd tracker") }
+          
         end
       end
     end

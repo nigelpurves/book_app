@@ -3,8 +3,8 @@ require 'spotify'
 class Track < ActiveRecord::Base
 
   attr_accessible :name, :artist
-  has_many :interests
-  has_many :users, through: :interests
+  has_many :track_interests
+  has_many :users, through: :track_interests
   belongs_to :artist
 
   accepts_nested_attributes_for :artist

@@ -8,10 +8,10 @@ class ArtistInterest < Interest
   validates_presence_of :artist
 
   def position
-    self.artist.interests.reverse_order.index(self) + 1
+    self.artist.artist_interests.reverse_order.index(self) + 1
   end
 
   def is_last_interest?
-    self.artist.interests.count == self.position
+    self.artist.artist_interests.count == self.position
   end
 end
