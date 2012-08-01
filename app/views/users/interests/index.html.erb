@@ -1,15 +1,14 @@
 <% provide(:title, @user.name) %>
-<div class="row">
+<div class="row span12">
   <aside class="span4">
     <section class="userinfo">
       <%= render 'shared/user_info' %>
     </section>
-		<div class="row">
-    	<section>
-      	<%= render 'shared/track_form' %>
-    	</section>
+    <section>
+      <%= render 'shared/track_form' %>
+    </section>
   </aside>
-	<div class="span6 offset2 artistinterests">
+	<div class="span6 offset1 artistinterests well">
 		<h3>Artists</h3>
 		<br />
 		<table class="table table-striped artistintereststable">
@@ -18,7 +17,7 @@
 	</div>
 </div>
 <div class="row">
-  <div class="span12 trackinterests">
+  <div class="span12 trackinterests well">
     <% if @user.tracks.any? %>
       <h3>Tracks (<%= @user.tracks.count %>)</h3>
       <table class="table table-striped trackintereststable">
