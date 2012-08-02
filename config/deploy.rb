@@ -8,6 +8,7 @@ load "config/recipes/postgresql"
 # load "config/recipes/nodejs"
 load "config/recipes/rbenv"
 load "config/recipes/check"
+load "config/recipes/whenever"
 load "deploy/assets"
 
 server "46.4.36.7", :web, :app, :db, primary: true
