@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120727154934) do
+ActiveRecord::Schema.define(:version => 20120802175059) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -23,23 +23,25 @@ ActiveRecord::Schema.define(:version => 20120727154934) do
   create_table "interests", :force => true do |t|
     t.integer  "user_id"
     t.integer  "track_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "source"
     t.string   "url"
     t.integer  "artist_id"
     t.string   "type"
+    t.datetime "last_notified_at"
   end
 
   add_index "interests", ["user_id", "track_id"], :name => "index_interests_on_user_id_and_track_id"
 
   create_table "tracks", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "spotify_link"
     t.string   "itunes_link"
     t.integer  "artist_id"
+    t.datetime "discovered_at"
   end
 
   add_index "tracks", ["created_at"], :name => "index_tracks_on_created_at"

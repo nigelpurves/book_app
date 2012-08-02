@@ -129,10 +129,10 @@ describe User do
     
     before { @user.save }
     let!(:older_interest) do
-      FactoryGirl.create(:interest, user: @user, created_at: 1.day.ago)
+      FactoryGirl.create(:track_interest, user: @user, created_at: 1.day.ago)
     end
     let!(:newer_interest) do
-      FactoryGirl.create(:interest, user: @user, created_at: 1.hour.ago)
+      FactoryGirl.create(:track_interest, user: @user, created_at: 1.hour.ago)
     end
     
     it "should have the right tracks in the right order" do

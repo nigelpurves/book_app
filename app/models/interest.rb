@@ -9,7 +9,6 @@ class Interest < ActiveRecord::Base
 
   default_scope order: 'interests.created_at DESC'
   scope :reverse_order, order('created_at ASC')
-  
 
   def self.build_track_interest(track_name, artist_name)
     track_record = Track.joins(:artist).where('lower("tracks"."name") = ? AND lower("artists"."name") = ?', track_name.downcase, artist_name.downcase).first

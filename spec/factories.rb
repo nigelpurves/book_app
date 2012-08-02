@@ -19,8 +19,13 @@ FactoryGirl.define do
     name "Codex"
   end
   
-  factory :interest do |f|
+  factory :track_interest do |f|
     f.association :track
     f.association :user
+  end
+  
+  factory :artist_interest do |f|
+    f.association :user
+    f.association :artist
   end
 end

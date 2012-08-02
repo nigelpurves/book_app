@@ -17,5 +17,9 @@ class TrackInterest < Interest
   def artist_name
     track.artist.name
   end
-
+  
+  def notify_user!
+    UserMailer.track_available(self).deliver
+    self.update_attribute(:last_notified_at, Time.now)
+  end
 end

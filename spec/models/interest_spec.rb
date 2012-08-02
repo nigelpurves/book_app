@@ -7,7 +7,7 @@ describe Interest do
   end
 
   let(:user) { FactoryGirl.create(:user) }
-  let(:interest) { FactoryGirl.create(:interest, user: user) }
+  let(:interest) { FactoryGirl.create(:track_interest, user: user) }
 
   subject { interest }
 

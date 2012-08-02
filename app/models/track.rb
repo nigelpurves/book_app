@@ -11,6 +11,12 @@ class Track < ActiveRecord::Base
 
   validates :artist, presence: true
   validates :name, presence: true, length: {maximum: 140}
+  
+  after_initialize :init
+
+  def init
+    self.discovered_at ||= Time.now
+  end
 
   def lookup_links
     lookup_spotify_link
@@ -49,7 +55,7 @@ class Track < ActiveRecord::Base
       if track.spotify_link_changed? || track.itunes_link_changed?
         track.save!
         track.interests.each do |interest|
-          UserMailer.song_available(interest).deliver
+          interest.notify_user!
         end
       end
     end
