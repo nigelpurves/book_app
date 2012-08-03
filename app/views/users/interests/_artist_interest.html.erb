@@ -1,6 +1,5 @@
 <tr>
   <td class="name"><%= artist_interest.name.titlecase %></td>
-  <td class="time"><%= time_ago_in_words(artist_interest.created_at) %></td>
 	<td class="coolnessranking">
     <% if artist_interest.is_last_interest? %>
       You're the <%= artist_interest.position.ordinalize %> tracker of this artist!
