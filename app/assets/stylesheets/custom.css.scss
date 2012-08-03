@@ -18,6 +18,11 @@ html {
 
 body {
   padding-top: 60px;
+	background-color: #FFFFFF;
+	background: image-url('Optimized-CDs1_v2.jpg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 section {
@@ -38,6 +43,14 @@ textarea {
 .well {
 	background-color: #F0F8FF;
 }
+
+.drop-shadow {
+border: 1px solid #efefef;
+background: #fff;
+-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
+box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; }
+
 
 /* typography */
 
@@ -263,7 +276,7 @@ aside {
 
 .hero-unit {
 	h2 {
-	margin-bottom: 50px;
+		margin-bottom: 50px;
 	}
 }
 

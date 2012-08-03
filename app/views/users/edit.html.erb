@@ -1,46 +1,47 @@
 <% provide(:title, "Edit user") %> 
-<h1>Update your profile</h1>
+<div class="row well drop-shadow">
 
-<div class="row">
-	<div class="span2 offset1">
-  	<%= gravatar_for @user %>
-  	<a href="http://gravatar.com/emails">Change profile image</a>
+	<h1 class="center">Update your profile</h1>
+
+	<div class="row">
+		<div class="span2 offset4">
+  		<%= gravatar_for @user %>
+  		<a href="http://gravatar.com/emails">Change profile image</a>
+		</div>
 	</div>
-</div>
-<div class="row account_details">
+	<div class="row account_details">
+  	<div class="span5 offset4">
+			<h3>Account details</h3>
+	  	<%= form_for(@user) do |f| %>
+	      <%= render 'shared/error_messages', object: f.object %>
 
-  <div class="span6 offset1">
-		<h3>Account details</h3>
-  	<%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+	      <%= f.label :name %>
+	      <%= f.text_field :name %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+	      <%= f.label :email %>
+	      <%= f.text_field :email %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+	      <%= f.label :password %>
+	      <%= f.password_field :password %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+	      <%= f.label :password_confirmation, "Confirm Password" %>
+	      <%= f.password_field :password_confirmation %>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-   	<% end %>
-  </div>
-</div>
-<div class="row playerstitle">
-	
-	<div class="span9 offset1">
-		<h3>Where should we track your tracks?</h3>
-		<form class="form-inline playerschecks">
-			<label class="checkbox iTunes">`
-				<input type="checkbox">iTunes</input>
-			</label>
-			<label class="checkbox Spotify">
-				<input type="checkbox">Spotify</input>
-			</label>
-		</form>
+	      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+	   	<% end %>
+  	</div>
+	</div>
+	<div class="row playerstitle">
+		<div class="span8 offset3">
+			<h3>Where should we track your tracks?</h3>
+			<form class="form-inline playerschecks">
+				<label class="checkbox iTunes">`
+					<input type="checkbox">iTunes</input>
+				</label>
+				<label class="checkbox Spotify">
+					<input type="checkbox">Spotify</input>
+				</label>
+			</form>
+		</div>
 	</div>
 </div>

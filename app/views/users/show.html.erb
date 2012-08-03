@@ -1,23 +1,23 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
+  <aside class="span4 well drop-shadow">
     <section class="userinfo">
       <%= render 'shared/user_info' %>
     </section>
   </aside>
-	<div class="span6 offset2 artistinterests">
+	<div class="span6 offset1 artistinterests well drop-shadow">
 		<h3>Artists</h3>
 		<br />
-		<table class="table table-striped artistintereststable">
+		<table class="table artistintereststable">
 			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
 		</table>
 	</div>
 </div>
 <div class="row">
-	<div class="span12 trackinterests">
+	<div class="span12 trackinterests well drop-shadow">
 		<% if @user.tracks.any? %>
 			<h3>Tracks (<%= @user.tracks.count %>)</h3>
-	    <table class="table table-striped trackintereststable">
+	    <table class="table trackintereststable">
 				<tr>
 					<td class="track">
 						<h3>Artist</h3>
