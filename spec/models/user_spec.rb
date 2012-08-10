@@ -152,7 +152,9 @@ describe User do
     
     it "successfully" do
       expect do
-        @user.save_sk_tracked_artists
+        VCR.use_cassette("sk/nigelpurves", :record => :new_episodes) do
+          @user.save_sk_tracked_artists
+        end
       end.to change(Interest, :count).by(17)      
     end
   end

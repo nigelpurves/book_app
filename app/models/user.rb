@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   
   def save_sk_tracked_artists
     self.sk_tracked_artists.each do |k|
-      Interest.build_artist_interest(k)
+      Interest.build_interest(nil, k)
     end
   end
   

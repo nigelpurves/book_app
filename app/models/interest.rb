@@ -1,4 +1,6 @@
 class Interest < ActiveRecord::Base
+  require 'songkickr'
+  
   belongs_to :user
   belongs_to :artist
   belongs_to :track
@@ -39,7 +41,12 @@ class Interest < ActiveRecord::Base
       self.build_track_interest(track_name, artist_name)
     end
   end
-
+  
+#  def save_sk_tracked_artists
+#    @user.sk_tracked_artists.each do |k|
+#      self.build_interest(nil, k)
+#    end
+#  end
 end# == Schema Information
 #
 # Table name: interests
