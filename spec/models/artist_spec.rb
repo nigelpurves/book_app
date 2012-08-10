@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Artist do
 
-  let(:user)    { FactoryGirl.create(:user) }
+  let(:user)    { FactoryGirl.create(:user, skusername: 'nigelpurves') }
   let(:artist)  { FactoryGirl.create(:artist, name: "The xx") }
   let(:artist_interest) { FactoryGirl.create(:artist_interest, user: user, artist: artist) }
 

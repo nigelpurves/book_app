@@ -8,7 +8,7 @@ describe User do
   
   before do
     @user = User.new(name: "Example User", email: "user@example.com", 
-                password: "foobar", password_confirmation: "foobar")
+                password: "foobar", password_confirmation: "foobar", skusername: "nigelpurves")
   end
   
   subject { @user }
@@ -145,6 +145,15 @@ describe User do
       tracks.each do |track|
         Track.find_by_id(track.id).should be_nil
       end
+    end
+  end
+
+  describe "should be able to create artist interests from their tracked artists on Songkick" do
+    
+    it "successfully" do
+      expect do
+        @user.save_sk_tracked_artists
+      end.to change(Interest, :count).by(17)      
     end
   end
 end# == Schema Information

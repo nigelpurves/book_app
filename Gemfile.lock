@@ -1,3 +1,9 @@
+PATH
+  remote: ~/documents/development/songkickr
+  specs:
+    songkickr (0.2.2)
+      songkickr
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -238,6 +244,7 @@ DEPENDENCIES
   rails (= 3.2.3)
   rspec-rails (= 2.10.0)
   sass-rails (= 3.2.4)
+  songkickr!
   spotify-metadata
   therubyracer
   uglifier (= 1.2.3)

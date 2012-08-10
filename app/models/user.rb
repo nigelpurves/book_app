@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  require 'songkickr'
+
+  
+  attr_accessible :email, :name, :password, :password_confirmation, :skusername
   has_secure_password
 
   has_many :interests, dependent: :destroy
   has_many :tracks, through: :interests
-  has_many :artists, through: :tracks
+  has_many :artists, through: :interests     # CHANGED THIS TO THROUGH: :INTERESTS FROM THROUGH: :TRACKS - WILL THAT WORK?!?!?
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
@@ -17,9 +20,6 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-#  def send_artist_new_releases
-#    self.tracks.discovered_at
-#  end
   
   def has_bookmarklet_token?
     self.bookmarklet_token.present?
@@ -28,6 +28,29 @@ class User < ActiveRecord::Base
   def update_bookmarklet_token!
     create_bookmarklet_token
     self.save!(:validate => false)
+  end
+  
+  def save_sk_tracked_artists
+    self.sk_tracked_artists.each do |k|
+      Interest.build_artist_interest(k)
+    end
+  end
+  
+  def sk_tracked_artists
+    sk = []
+    self.sk_tracked_artist_info.each do |s|
+      sk << s.display_name
+    end
+    sk
+  end
+  
+  def sk_tracked_artist_info
+    remote = Songkickr::Remote.new 'pNAGmi2khmWjJxT2'
+    sk_info = []
+    (1..100).each do |p|      
+      sk_info << remote.users_tracked_artists(skusername, page: p).results
+    end
+    sk_info.compact.flatten
   end
 
   private
@@ -56,4 +79,3 @@ end
 #  admin             :boolean         default(FALSE)
 #  bookmarklet_token :string(255)
 #
-

@@ -18,6 +18,9 @@ gem 'jquery-rails', '2.0.0'
 
 gem 'whenever', :require => false
 
+# gem 'songkickr', :git => 'git://github.com/nigelpurves/songkickr'
+gem 'songkickr', :path => '~/documents/development/songkickr'
+
 
 group :development do
   gem 'annotate', '~> 2.4.1.beta'

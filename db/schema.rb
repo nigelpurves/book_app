@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802175059) do
+ActiveRecord::Schema.define(:version => 20120810112244) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20120802175059) do
     t.string   "remember_token"
     t.boolean  "admin",             :default => false
     t.string   "bookmarklet_token"
+    t.string   "skusername"
   end
 
   add_index "users", ["bookmarklet_token"], :name => "index_users_on_bookmarklet_token", :unique => true
