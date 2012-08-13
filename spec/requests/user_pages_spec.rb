@@ -194,10 +194,11 @@ describe "User pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-        fill_in "Name",             with: new_name
-        fill_in "Email",            with: new_email
-        fill_in "Password",         with: user.password
-        fill_in "Confirm Password", with: user.password
+        fill_in "Name",               with: new_name
+        fill_in "Email",              with: new_email
+        fill_in "Password",           with: user.password
+        fill_in "Confirm Password",   with: user.password
+        fill_in "Songkick Username",  with: user.skusername
         click_button "Save changes"
       end
 
@@ -206,6 +207,12 @@ describe "User pages" do
       it { should have_link('Sign out', href: signout_path) }
       specify { user.reload.name.should  == new_name }
       specify { user.reload.email.should == new_email }
+      
+      it "should save the user's Songkick Username" do
+        pending
+        # user.skusername.should_not be_nil
+      end
+      
     end
   end
 end

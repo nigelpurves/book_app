@@ -101,5 +101,11 @@ describe "UserInterestsPages" do
         end
       end
     end
+    
+    describe "of artist interests by linking with Songkick" do
+      before { click_button "Link with Songkick" }
+      
+      it { should change(Interest, :count).by(20) }
+    end
   end
 end
