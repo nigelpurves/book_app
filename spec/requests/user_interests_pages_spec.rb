@@ -103,9 +103,10 @@ describe "UserInterestsPages" do
     end
     
     describe "of artist interests by linking with Songkick" do
-      before { click_button "Link with Songkick" }
       
-      it { should change(Interest, :count).by(20) }
+      it "should be successful" do
+        expect { click_link "Link to Songkick" }.to change(Interest, :count).by(20)
+      end
     end
   end
 end

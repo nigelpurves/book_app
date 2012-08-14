@@ -1,7 +1,9 @@
 MusicApp::Application.routes.draw do
 
   resources :users do
-    resources :interests,  only: [:create, :index, :destroy], controller: "users/interests"
+    resources :interests,  only: [:create, :create_with_songkick, :index, :destroy], controller: "users/interests" do
+      post 'create_with_songkick', :on => :collection
+    end
   end
 
   resources :sessions,     only: [:new, :create, :destroy]

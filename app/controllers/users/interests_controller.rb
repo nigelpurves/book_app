@@ -20,6 +20,30 @@ class Users::InterestsController < ApplicationController
     load_index_data
     render 'index'
   end
+  
+  def create_with_songkick
+    unless current_user.skusername.nil?
+      sk_artists = current_user.sk_tracked_artists
+      sk_artists.each do |skartist|
+        @sk_interest_params = InterestParams.new(artist_name: skartist)
+        
+        if @sk_interest_params.valid?
+          @interest       = @sk_interest_params.build_interest
+          @interest.user  = current_user
+          
+          if @interest.save
+            flash[:success] = "Linked to SongKick!"
+            redirect_to user_interests_path(current_user)
+            return
+          end
+        end
+      end
+    else
+      redirect_to edit_user_path(current_user)
+    end    
+    load_index_data
+    render 'index'
+  end
 
   def index
     @interest_params = InterestParams.new

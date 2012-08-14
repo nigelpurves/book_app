@@ -14,7 +14,7 @@
 		<table class="table artistintereststable">
 			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
 		</table>
-
+		<%= link_to "Link to Songkick", create_with_songkick_user_interests_path(@user.to_param), :method => :post %>
 	</div>
 </div>
 <div class="row">
