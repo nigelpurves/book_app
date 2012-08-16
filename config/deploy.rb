@@ -21,7 +21,6 @@ set :deploy_via, :rsync_with_remote_cache
 set :user, "qusic"
 set :application, "qusic.co.uk"
 set :deploy_to, "/home/#{user}/sites/#{application}"
-set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
