@@ -1,5 +1,5 @@
 $(function() {
-    $("#interest_track_attributes_artist" ).autocomplete({
+    $("#interest_params_artist_name" ).autocomplete({
         source: function( request, response ) {
             $.ajax({
                 url: "https://developer.echonest.com/api/v4/artist/suggest",
