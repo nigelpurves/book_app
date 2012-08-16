@@ -20,29 +20,16 @@ class Users::InterestsController < ApplicationController
     load_index_data
     render 'index'
   end
-  
+
   def create_with_songkick
-    unless current_user.skusername.nil?
-      sk_artists = current_user.sk_tracked_artists
-      sk_artists.each do |skartist|
-        @sk_interest_params = InterestParams.new(artist_name: skartist)
-        
-        if @sk_interest_params.valid?
-          @interest       = @sk_interest_params.build_interest
-          @interest.user  = current_user
-          
-          if @interest.save
-            flash[:success] = "Linked to SongKick!"
-            redirect_to user_interests_path(current_user)
-            return
-          end
-        end
-      end
-    else
+    if current_user.skusername.nil?
       redirect_to edit_user_path(current_user)
-    end    
-    load_index_data
-    render 'index'
+    else
+      importer = SongkickImporter.new(current_user.skusername)
+      interests = importer.insert_tracked_artists_for_user(current_user)
+      flash[:success] = "Got #{interests.size} artists from the SongKick user #{current_user.skusername}"
+      redirect_to user_interests_path(current_user)
+    end
   end
 
   def index

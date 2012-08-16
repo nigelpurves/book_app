@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   require 'songkickr'
 
-  
   attr_accessible :email, :name, :password, :password_confirmation, :skusername
   has_secure_password
 
@@ -13,14 +12,16 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   validates :name,  presence: true, length: { maximum: 50 }
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true,
               format: { with: VALID_EMAIL_REGEX },
               uniqueness: { case_sensitive: false }
+
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-  
+
   def has_bookmarklet_token?
     self.bookmarklet_token.present?
   end
@@ -29,13 +30,13 @@ class User < ActiveRecord::Base
     create_bookmarklet_token
     self.save!(:validate => false)
   end
-  
+
   def save_sk_tracked_artists
     self.sk_tracked_artists.each do |k|
-      Interest.build_interest(nil, k)
+      Interest.build_artist_interest(k)
     end
   end
-  
+
   def sk_tracked_artists
     sk = []
     self.sk_tracked_artist_info.each do |s|
@@ -43,12 +44,12 @@ class User < ActiveRecord::Base
     end
     sk
   end
-  
+
   def sk_tracked_artist_info
     remote = Songkickr::Remote.new 'pNAGmi2khmWjJxT2'
     sk_info = []
-    (1..100).each do |p|      
-      sk_info << remote.users_tracked_artists(skusername, page: p).results
+    (1..100).each do |p|
+      sk_info << remote.users_tracked_artists(self.skusername, page: p).results
     end
     sk_info.compact.flatten
   end

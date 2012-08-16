@@ -1,6 +1,6 @@
 class Interest < ActiveRecord::Base
   require 'songkickr'
-  
+
   belongs_to :user
   belongs_to :artist
   belongs_to :track
@@ -15,7 +15,7 @@ class Interest < ActiveRecord::Base
   def self.build_track_interest(track_name, artist_name)
     track_record = Track.joins(:artist).where('lower("tracks"."name") = ? AND lower("artists"."name") = ?', track_name.downcase, artist_name.downcase).first
     if track_record.nil?
-      artist_record = Artist.find(:first, :conditions => ['lower("artists"."name") = ?', artist_name.downcase])
+      artist_record = Artist.first(:conditions => ['lower("artists"."name") = ?', artist_name.downcase])
       if artist_record.nil?
         artist_record = Artist.create(name: artist_name)
       end
@@ -27,7 +27,7 @@ class Interest < ActiveRecord::Base
   end
 
   def self.build_artist_interest(artist_name)
-    artist_record = Artist.find(:first, :conditions => ['lower("artists"."name") = ?', artist_name.downcase])
+    artist_record = Artist.first(:conditions => ['lower("artists"."name") = ?', artist_name.downcase])
     if artist_record.nil?
       artist_record = Artist.create(name: artist_name)
     end
@@ -41,7 +41,7 @@ class Interest < ActiveRecord::Base
       self.build_track_interest(track_name, artist_name)
     end
   end
-  
+
 #  def save_sk_tracked_artists
 #    @user.sk_tracked_artists.each do |k|
 #      self.build_interest(nil, k)

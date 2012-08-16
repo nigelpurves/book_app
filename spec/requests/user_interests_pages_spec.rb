@@ -42,19 +42,19 @@ describe "UserInterestsPages" do
           expect { click_button "Track this!" }.should change(Track, :count).by(1)
         end
       end
-      
+
       describe "should render an index of track" do
 
         before  { fill_in 'interest_params[artist_name]', with: "adam artist" }
         before  { fill_in 'interest_params[track_name]',  with: "massive tune" }
         before  { click_button "Track this!" }
-        
+
         describe  "interests with titlecases" do
           it { should have_selector("table.trackintereststable tr", text: "Adam Artist") }
           it { should have_selector("tr", text: "Massive Tune") }
-        
+
           describe "interests with the correct user coolness ranking" do
-            
+
             before  { sign_in user2 }
             before  { visit user_interests_path(user2) }
             before  { fill_in 'interest_params[artist_name]', with: "adam artist" }
@@ -62,7 +62,7 @@ describe "UserInterestsPages" do
             before  { click_button "Track this!" }
 
             it { should have_selector("table.trackintereststable tr", text: "2nd tracker") }
-            
+
           end
         end
       end
@@ -79,33 +79,34 @@ describe "UserInterestsPages" do
           expect { click_button "Track this!" }.should change(Artist, :count).by(1)
         end
       end
-      
+
       describe "should render an index of artist" do
 
         before  { fill_in 'interest_params[artist_name]',  with: "sam singer" }
         before { click_button "Track this!" }
-        
+
         describe  "interests with titlecases" do
           it { should have_selector("table.artistintereststable tr", text: "Sam Singer") }
         end
-        
+
         describe "interests with the correct user coolness ranking" do
-          
+
           before  { sign_in user2 }
           before  { visit user_interests_path(user2) }
           before  { fill_in 'interest_params[artist_name]', with: "sam singer" }
           before  { click_button "Track this!" }
 
           it { should have_selector("table.artistintereststable tr", text: "2nd tracker") }
-          
+
         end
       end
     end
-    
+
     describe "of artist interests by linking with Songkick" do
-      
+      use_vcr_cassette('sk/nigelpurves')
+
       it "should be successful" do
-        expect { click_link "Link to Songkick" }.to change(Interest, :count).by(20)
+        expect { click_link "Link to Songkick" }.to change(Interest, :count).by(596)
       end
     end
   end
