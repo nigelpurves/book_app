@@ -52,6 +52,7 @@ end
 
 group :deploy do
   gem 'capistrano'
+  gem 'capistrano_rsync_with_remote_cache'
 end
 
 group :production do

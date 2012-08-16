@@ -16,7 +16,7 @@ set :stages, %w(production)
 set :default_stage, "production"
 
 set :no_release, true
-# set :deploy_via, :rsync_with_remote_cache
+set :deploy_via, :rsync_with_remote_cache
 
 set :user, "qusic"
 set :application, "qusic.co.uk"
@@ -25,7 +25,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git://github.com/nigelpurves/music_app.git"
+set :repository, "ssh://git@github.com/nigelpurves/music_app.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
