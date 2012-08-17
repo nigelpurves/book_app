@@ -14,13 +14,14 @@
 		<table class="table artistintereststable">
 			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
 		</table>
+		Track artists from your <%= image_tag('NP_SK_com_pink_small_v1.png') %> profile
 		<%= link_to "Link to Songkick", create_with_songkick_user_interests_path(@user.to_param), :method => :post %>
 	</div>
 </div>
 <div class="row">
   <div class="span12 trackinterests well drop-shadow">
-    <% if @user.tracks.any? %>
-      <h3>Tracks (<%= @user.tracks.count %>)</h3>
+     <h3>Tracks (<%= @user.tracks.count %>)</h3>
+    	<% if @user.tracks.any? %>
       <table class="table trackintereststable">
         <tr>
           <td class="track">

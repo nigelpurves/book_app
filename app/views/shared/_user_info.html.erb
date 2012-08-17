@@ -6,15 +6,12 @@
   <%= link_to "view my profile", @user %>
 </span>
 <span>
-  <%= pluralize(@user.tracks.count, "track") %>
-</span>
-<span>
   <% if current_user? @user %>
     <% if @user.has_bookmarklet_token? then %>
       Your bookmarklet:
       <%=  render "shared/bookmarklet_link", :user => @user %>
     <% else %>
-      You haven't created a bookmarklet yet!
+      Create a bookmarklet!
       <%= link_to "Do it! Now!", new_bookmarklet_path %>
     <% end %>
   <% end %>
