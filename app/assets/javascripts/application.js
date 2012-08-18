@@ -17,8 +17,8 @@
 // = require jquery-ui
 // = require bootstrap
 // = require artist_autocomplete
-//= require bootstrap-tooltip.js
-//= require bootstrap-popover.js
+// = require bootstrap-tooltip.js
+// = require bootstrap-popover.js
 
 
 
@@ -31,6 +31,6 @@ $(".js-disable").each(function(i, e) {
   });
 });
 
-$(function () {
-    $('a[rel=popover]').popover;
+$(function ()  
+{ $(".popoverhiw").popover();  
 });
