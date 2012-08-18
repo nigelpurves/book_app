@@ -1,3 +1,0 @@
-$(function() {
-  $('#howitworks').popover('show')
-});

@@ -17,6 +17,8 @@
 // = require jquery-ui
 // = require bootstrap
 // = require artist_autocomplete
+//= require bootstrap-tooltip.js
+//= require bootstrap-popover.js
 
 
 
@@ -27,4 +29,8 @@ $(".js-disable").each(function(i, e) {
     alert("Drag this bookmarklet to your toolbar and use it on sites like youtube and soundcloud to track stuff on qusic!");
     return false
   });
+});
+
+$(function () {
+    $('a[rel=popover]').popover;
 });
