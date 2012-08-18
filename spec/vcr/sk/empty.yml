@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.songkick.com/api/3.0/users//artists/tracked.json?apikey=pNAGmi2khmWjJxT2&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      date:
+      - Fri, 17 Aug 2012 15:34:01 GMT
+      server:
+      - thin 1.2.4 codename Flaming Astroboy
+      x-cascade:
+      - pass
+      content-type:
+      - application/json
+      vary:
+      - Accept-Encoding
+      connection:
+      - close
+      transfer-encoding:
+      - chunked
+    body:
+      encoding: US-ASCII
+      string: ! '{"resultsPage":{"status":"error","error":{"message":"Resource not
+        found"}}}'
+    http_version: '1.1'
+  recorded_at: Fri, 17 Aug 2012 15:34:01 GMT
+recorded_with: VCR 2.2.3

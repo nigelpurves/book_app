@@ -137,7 +137,7 @@ footer {
 
 aside {
   section {
-    padding: 10px 0;
+    padding: 0px 0;
     border-top: 1px solid $grayLighter;
     margin-bottom: 20px;
 		&:first-child {
@@ -235,11 +235,36 @@ aside {
   }
 }
 
+.trackformtitle {
+	text-align: left;
+	color: #333;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.skbutton {
+	margin-bottom: -50px;
+}
+
+.sklogo {
+	img {
+		margin-top: 6px;
+		margin-left: 7px;
+		}
+}
+
+.pre_skusername {
+	margin-top: 25px;
+	img {
+		vertical-align: middle;
+	}
+}
+
 .artistinterests {
-		margin-top: 60px;
+		margin-top: 0px;
 		table { 
 			display: block;
-			max-height: 150px;
+			max-height: 130px;
 			overflow-y: auto;
 			td.name { 
 				width: 30%;
@@ -269,7 +294,7 @@ aside {
 }
 
 .userinfo {
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 }
 
 /* Welcome Page */

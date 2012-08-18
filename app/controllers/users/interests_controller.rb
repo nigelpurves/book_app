@@ -22,7 +22,7 @@ class Users::InterestsController < ApplicationController
   end
 
   def create_with_songkick
-    if current_user.skusername.nil?
+    if current_user.skusername.nil? || current_user.skusername.empty?
       redirect_to edit_user_path(current_user)
     else
       importer = SongkickImporter.new(current_user.skusername)
