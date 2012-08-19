@@ -115,13 +115,9 @@ describe "UserInterestsPages" do
       describe "should not produce an error if the username is empty" do
         let(:user) { FactoryGirl.create(:user, :skusername => '') }
         
-        it do
-          expect do
-            VCR.use_cassette('sk/empty', :record => :new_episodes) do
-              click_button 'Track artists from'
-            end
-          end.should_not raise_error
-        end
+        it { should_not have_button('Track artists from') }
+        it { should have_link('tell us your Songkick username') }
+
       end
       
       describe "should not produce an error if the username is invalid" do

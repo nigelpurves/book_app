@@ -32,5 +32,5 @@ $(".js-disable").each(function(i, e) {
 });
 
 $(function ()  
-{ $(".popoverhiw").popover();  
+{ $(".popoverhiw").popover({placement: 'right'});  
 });

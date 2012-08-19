@@ -13,6 +13,9 @@
     <% else %>
       Create a bookmarklet!
       <%= link_to "Do it! Now!", new_bookmarklet_path %>
+			<span class="howbookmarkletworks">
+			<%= link_to 'How does the bookmarklet work?', '#', rel: "popover", :"data-title" => "How does the bookmarklet work?", :"data-content" => render(:partial => 'shared/how_does_the_bookmarklet_work'), class: "popoverhiw" %>
+			</span>
     <% end %>
   <% end %>
 </span>
