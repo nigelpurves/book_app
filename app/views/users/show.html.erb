@@ -6,7 +6,7 @@
     </section>
   </aside>
 	<div class="span6 offset1 artistinterests well drop-shadow">
-		<h3>Artists</h3>
+		<h3>Artists (<%= @user.interests.where(type: ArtistInterest).count %>)</h3>
 		<br />
 		<table class="table artistintereststable">
 			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
