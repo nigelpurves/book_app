@@ -15,7 +15,8 @@ class Artist < ActiveRecord::Base
   end
   
   def is_new?
-    self.created_at > 24.hours.ago
+    # This means artists created less than 24 hours ago because times within the last 24 hours are greater than the time 24 hours ago
+    self.created_at > 24.hours.ago 
   end
   
   def spotify_catalogue_download

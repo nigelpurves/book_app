@@ -60,9 +60,9 @@ MusicApp::Application.configure do
   config.action_mailer.smtp_settings = {
    :address => 'smtp.sendgrid.net',
    :port => 587,
-   :domain => 'qusic.herokuapp.com',
-   :user_name => 'app4890262@heroku.com',
-   :password => 'q7jynklb',
+   :domain => 'qusic.co.uk',
+   :user_name => 'qusic.co.uk',
+   :password => 'qusicmusic1',
    :authentication => 'plain',
    :enable_starttls_auto => true
   }

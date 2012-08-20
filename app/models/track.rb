@@ -54,7 +54,7 @@ class Track < ActiveRecord::Base
       track.lookup_links
       if track.spotify_link_changed? || track.itunes_link_changed?
         track.save!
-        track.interests.each do |interest|
+        track.track_interests.each do |interest|
           interest.notify_user!
         end
       end
