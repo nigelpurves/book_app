@@ -62,7 +62,7 @@ MusicApp::Application.configure do
    :port => 587,
    :domain => 'qusic.co.uk',
    :user_name => 'qusic.co.uk',
-   :password => # 'qusicmusic1',
+   :password => '' # 'qusicmusic1',
    :authentication => 'plain',
    :enable_starttls_auto => true
   }
