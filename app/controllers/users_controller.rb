@@ -31,7 +31,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(params[:user])
+    parms = params[:user]
+
+    unless parms[:password].nil? || parms[:password].empty?
+      @user.validate_password= true
+    end
+
+    if @user.update_attributes(parms)
       flash[:success] = "Profile updated"
       sign_in @user
       redirect_to user_interests_path(@user)
@@ -46,7 +52,7 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed."
     redirect_to root_path
   end
-  
+
 
 
   private
@@ -66,7 +72,7 @@ class UsersController < ApplicationController
     def admin_user
       not_found unless current_user.admin?
     end
-    
+
     def load_interest_data
       @track_interests = @user.interests.where(:type => "TrackInterest").paginate(page: params[:page])
       @artist_interests = @user.interests.where(:type => "ArtistInterest")

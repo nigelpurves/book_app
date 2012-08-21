@@ -1,33 +1,33 @@
 require 'spec_helper'
 
 describe User do
-  
+
   before do
     Track.any_instance.stub(:lookup_links)
   end
-  
+
   before do
-    @user = User.new(name: "Example User", email: "user@example.com", 
-                password: "foobar", password_confirmation: "foobar", skusername: "nigelpurves")
+    @user = User.new(name:     "Example User", email: "user@example.com",
+                     password: "foobar", password_confirmation: "foobar", skusername: "nigelpurves")
   end
-  
+
   subject { @user }
-  
+
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:interests) }
   it { should respond_to(:tracks) }
   it { should respond_to(:artists) }
-  
+
   it { should be_valid }
   it { should_not be_admin }
-  
+
   describe "with admin attribute set to 'true'" do
     before { @user.toggle!(:admin) }
-    
+
     it { should be_admin }
   end
-  
+
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
@@ -35,39 +35,51 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
-  
+
   it { should be_valid }
-  
+
   describe "when name is not present" do
     before { @user.name = "  " }
     it { should_not be_valid }
   end
-  
+
   describe "when email is not present" do
     before { @user.email = " " }
     it { should_not be_valid }
   end
-  
-  describe "when password is not present" do
-    before { @user.password = @user.password_confirmation = " " }
-    it { should_not be_valid }
+
+  describe "validating the password" do
+    before { @user.validate_password= true }
+
+
+    describe "when password is not present" do
+      before { @user.password = @user.password_confirmation = " " }
+      it { should_not be_valid }
+    end
+
+    describe "when password doesn't match confirmation" do
+      before { @user.password_confirmation = "mismatch" }
+      it { should_not be_valid }
+    end
+
+    describe "when password confirmation is nil" do
+      before { @user.password_confirmation = nil }
+      it { should_not be_valid }
+    end
+
+    describe "with a password that's too short" do
+      before { @user.password = @user.password_confirmation = "a" * 5 }
+      it { should be_invalid }
+    end
+
   end
-  
-  describe "when password doesn't match confirmation" do
-    before { @user.password_confirmation = "mismatch" }
-    it { should_not be_valid }
-  end
-  
-  describe "when password confirmation is nil" do
-    before { @user.password_confirmation = nil }
-    it { should_not be_valid }
-  end
-  
+
+
   describe "when name is too long" do
     before { @user.name = "a" * 51 }
     it { should_not be_valid }
   end
-  
+
   describe "when email format is invalid" do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
@@ -75,7 +87,7 @@ describe User do
       addresses.each do |invalid_address|
         @user.email = invalid_address
         @user.should_not be_valid
-      end      
+      end
     end
   end
 
@@ -85,25 +97,21 @@ describe User do
       addresses.each do |valid_address|
         @user.email = valid_address
         @user.should be_valid
-      end      
+      end
     end
   end
-  
+
   describe "when email address is already taken" do
     before do
-      user_with_same_email = @user.dup
+      user_with_same_email       = @user.dup
       user_with_same_email.email = @user.email.upcase
       user_with_same_email.save
     end
-    
+
     it { should_not be_valid }
   end
-  
-  describe "with a password that's too short" do
-    before { @user.password = @user.password_confirmation = "a" * 5 }
-    it { should be_invalid }
-  end
-  
+
+
   describe "return value of authenticate method" do
     before { @user.save }
     let(:found_user) { User.find_by_email(@user.email) }
@@ -119,14 +127,14 @@ describe User do
       specify { user_for_invalid_password.should be_false }
     end
   end
-  
+
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
-  
+
   describe "track associations" do
-    
+
     before { @user.save }
     let!(:older_interest) do
       FactoryGirl.create(:track_interest, user: @user, created_at: 1.day.ago)
@@ -134,11 +142,11 @@ describe User do
     let!(:newer_interest) do
       FactoryGirl.create(:track_interest, user: @user, created_at: 1.hour.ago)
     end
-    
+
     it "should have the right tracks in the right order" do
       @user.interests.should == [newer_interest, older_interest]
     end
-    
+
     it "should destroy associated tracks" do
       tracks = @user.tracks
       @user.destroy
@@ -148,18 +156,18 @@ describe User do
     end
   end
 
-end# == Schema Information
-#
-# Table name: users
-#
-#  id                :integer         not null, primary key
-#  name              :string(255)
-#  email             :string(255)
-#  created_at        :datetime        not null
-#  updated_at        :datetime        not null
-#  password_digest   :string(255)
-#  remember_token    :string(255)
-#  admin             :boolean         default(FALSE)
-#  bookmarklet_token :string(255)
-#
+end # == Schema Information
+    #
+    # Table name: users
+    #
+    #  id                :integer         not null, primary key
+    #  name              :string(255)
+    #  email             :string(255)
+    #  created_at        :datetime        not null
+    #  updated_at        :datetime        not null
+    #  password_digest   :string(255)
+    #  remember_token    :string(255)
+    #  admin             :boolean         default(FALSE)
+    #  bookmarklet_token :string(255)
+    #
 

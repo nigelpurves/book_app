@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :skusername
   has_secure_password
 
+  attr_accessor :validate_password
+
   has_many :interests, dependent: :destroy
   has_many :tracks, through: :interests
   has_many :artists, through: :interests     # CHANGED THIS TO THROUGH: :INTERESTS FROM THROUGH: :TRACKS - WILL THAT WORK?!?!?
@@ -18,8 +20,8 @@ class User < ActiveRecord::Base
               format: { with: VALID_EMAIL_REGEX },
               uniqueness: { case_sensitive: false }
 
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, length: { minimum: 6 }, if: :password_required?
+  validates :password_confirmation, presence: true, if: :password_required?
 
 
   def has_bookmarklet_token?
@@ -31,27 +33,8 @@ class User < ActiveRecord::Base
     self.save!(:validate => false)
   end
 
-  def save_sk_tracked_artists
-    self.sk_tracked_artists.each do |k|
-      Interest.build_artist_interest(k)
-    end
-  end
-
-  def sk_tracked_artists
-    sk = []
-    self.sk_tracked_artist_info.each do |s|
-      sk << s.display_name
-    end
-    sk
-  end
-
-  def sk_tracked_artist_info
-    remote = Songkickr::Remote.new 'pNAGmi2khmWjJxT2'
-    sk_info = []
-    (1..100).each do |p|
-      sk_info << remote.users_tracked_artists(self.skusername, page: p).results
-    end
-    sk_info.compact.flatten
+  def password_required?
+    @validate_password
   end
 
   private

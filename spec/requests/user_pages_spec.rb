@@ -53,9 +53,9 @@ describe "User pages" do
   describe "profile page" do
     let(:user)  { FactoryGirl.create(:user) }
     let(:user2) { FactoryGirl.create(:user) }
-    
+
     before { sign_in user }
-    
+
 #    let(:artist) { FactoryGirl.create(:artist, name: "Adam Artist") }
 #    let(:track) { FactoryGirl.create(:track, name: "Massive Tune") }
 #    let(:interest) { FactoryGirl.create(:interest, user: user, track: track) }
@@ -63,70 +63,70 @@ describe "User pages" do
     before do
       Track.any_instance.stub(:lookup_links)
     end
-    
+
     describe "should render an index of track interests" do
-    
-      before do 
+
+      before do
         visit user_interests_path(user)
         fill_in 'interest_params[artist_name]',  with: "adam artist"
         fill_in 'interest_params[track_name]',   with: "massive tune"
         click_button "Track this!"
       end
-    
+
       describe "of the current user" do
-    
+
         before  { visit user_path(user) }
 
         it { should have_selector('title', text: user.name) }
-    
+
         it { page.should have_selector("table.trackintereststable tr", text: "Adam Artist") }
         it { page.should have_selector("table.trackintereststable tr", text: "Massive Tune") }
       end
-      
+
       describe "of another user only" do
-    
+
         before  {sign_in user2 }
         before  { visit user_interests_path(user2) }
         before  { fill_in 'interest_params[artist_name]', with: "steve singer" }
         before  { fill_in 'interest_params[track_name]',  with: "big tune" }
         before  { click_button "Track this!" }
         before  { visit user_path(user) }
-        
+
         it { page.should      have_selector("table.trackintereststable tr", text: "Adam Artist") }
         it { page.should      have_selector("table.trackintereststable tr", text: "Massive Tune") }
         it { page.should_not  have_content("Steve") }
-        
+
       end
 
     end
-    
+
     describe "should render an index of artist interests" do
-    
-      before do 
+
+      before do
         visit user_interests_path(user)
         fill_in 'interest_params[artist_name]',  with: "sam singer"
         click_button "Track this!"
       end
-    
+
       describe "of the current user" do
-    
+
         before  { visit user_path(user) }
 
         it { should have_selector('title', text: user.name) }
         it { page.should have_selector("table.artistintereststable tr", text: "Sam Singer") }
-        
+
       end
-      
+
       describe "of another user" do
-    
+
         before {sign_in user2 }
         before { visit user_path(user) }
-    
+
         it { page.should have_selector("table.artistintereststable tr", text: "Sam Singer") }
-        
+
       end
     end
-    
+
   end
 
   describe "signup page" do
@@ -184,10 +184,10 @@ describe "User pages" do
       # it { should have_link('change',     href: 'http://gravatar.com/emails') }
     end
 
-    describe "with invalid information" do
+    describe "be able to save successfully without changing anything" do
       before { click_button "Save changes" }
 
-      it { should have_content('error') }
+      it { should_not have_content('error') }
     end
 
     describe "with valid information" do
@@ -207,12 +207,12 @@ describe "User pages" do
       it { should have_link('Sign out', href: signout_path) }
       specify { user.reload.name.should  == new_name }
       specify { user.reload.email.should == new_email }
-      
+
       it "should save the user's Songkick Username" do
         pending
         # user.skusername.should_not be_nil
       end
-      
+
     end
   end
 end
