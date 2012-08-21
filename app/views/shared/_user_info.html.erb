@@ -1,21 +1,26 @@
-<a href="<%= user_path(@user) %>">
-  <%= gravatar_for @user, size: 52 %>
-</a>
-<h1><%= @user.name %></h1>
-<span>
-  <%= link_to "view my profile", @user %>
-</span>
-<span>
-  <% if current_user? @user %>
-    <% if @user.has_bookmarklet_token? then %>
-      Your bookmarklet:
-      <%=  render "shared/bookmarklet_link", :user => @user %>
-    <% else %>
-      Create a bookmarklet!
-      <%= link_to "Do it! Now!", new_bookmarklet_path %>
-			<span class="howbookmarkletworks">
-			<%= link_to 'How does the bookmarklet work?', '#', rel: "popover", :"data-title" => "How does the bookmarklet work?", :"data-content" => render(:partial => 'shared/how_does_the_bookmarklet_work'), class: "popoverhiw" %>
-			</span>
-    <% end %>
-  <% end %>
-</span>
+<div class="well drop-shadow">
+  <section class="userinfo">
+    <a href="<%= user_path(@user) %>">
+      <%= gravatar_for @user, size: 52 %>
+    </a>
+
+    <h1><%= @user.name %></h1>
+    <span>
+      <%= link_to "view my profile", @user %>
+    </span>
+    <span>
+      <% if current_user? @user %>
+        <% if @user.has_bookmarklet_token? then %>
+          Your bookmarklet:
+          <%= render "shared/bookmarklet_link", :user => @user %>
+        <% else %>
+          Create a bookmarklet!
+          <%= link_to "Do it! Now!", new_bookmarklet_path %>
+          <span class="howbookmarkletworks">
+          <%= link_to 'How does the bookmarklet work?', '#', rel: "popover", :"data-title" => "How does the bookmarklet work?", :"data-content" => render(:partial => 'shared/how_does_the_bookmarklet_work'), class: "popoverhiw" %>
+          </span>
+        <% end %>
+      <% end %>
+    </span>
+  </section>
+</div>

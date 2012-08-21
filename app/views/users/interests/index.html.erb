@@ -1,81 +1,36 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4 well drop-shadow">
-    <section class="userinfo">
+  <aside class="span5">
       <%= render 'shared/user_info' %>
-    </section>
-	</aside>
+  </aside>
 </div>
 <div class="row">
-	<div class="span12 well drop-shadow">
-		<h1 class="whatdoesitdo">Qusic tracks the music you love & tells you when it's released</h1>
-		<br />
-		<h2 class="togetstarted">To get started go to 'Track something here'</h2>
-	</div>
+  <div class="span12 ">
+    <div class="well drop-shadow">
+      <h1 class="whatdoesitdo">Qusic tracks the music you love & tells you when it's released</h1>
+      <br/>
+      <h2 class="togetstarted">To get started go to 'Track something here'</h2>
+    </div>
+  </div>
 </div>
 <div class="row">
-	<div class="span4 well drop-shadow track_form">
-  	<h2 class="trackformtitle">Track something here</h2>
-		<p>
-			<%= link_to 'How do I track an artist?', '#', rel: "popover", :"data-title" => "How do I track an artist?", :"data-content" => render(:partial => 'shared/how_do_I_track_an_artist'), class: "popoverhiw" %>
-		<br />
-			<%= link_to 'How do I track a song?', '#', rel: "popover", :"data-title" => "How do I track a song?", :"data-content" => render(:partial => 'shared/how_do_I_track_a_song'), class: "popoverhiw" %>
-		</p>
-		<%= render 'shared/track_form' %>
-	</div>
-	<div class="span6 offset1 artistinterests well drop-shadow">
-		<h3>Artists (<%= @user.interests.where(type: ArtistInterest).count %>)</h3>
-		<br />
-		<table class="table artistintereststable">
-			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
-		</table>
-		<% if @user.skusername.nil? || @user.skusername.empty? %>
-			<div class="pre_skusername">
-				<span>
-					To track artists from 
-				</span>
-				<span class="inline">
-					<%= image_tag('NP_SK_com_pink_small_v1.png') %>
-				</span>
-				<%= link_to "tell us your Songkick username", edit_user_path(current_user) %>
-			</div>
-		<% else %>
-		<div>
-			<div class="inline pull-left skbutton">
-				<%= button_to "Track artists from", create_with_songkick_user_interests_path(@user.to_param), :method => :post, :class => "btn btn-large" %>
-			</div>
-			<span class="inline sklogo">
-				<%= image_tag('NP_SK_com_pink_small_v1.png') %>
-			</span>
-		</div>
-		<% end %>
-	</div>
+  <div class="span4">
+    <div class="well drop-shadow track_form">
+      <h2 class="trackformtitle">Track something here</h2>
+      <p>
+        <%= link_to 'How do I track an artist?', '#', rel: "popover", :"data-title" => "How do I track an artist?", :"data-content" => render(:partial => 'shared/how_do_I_track_an_artist'), class: "popoverhiw" %>
+        <br/>
+        <%= link_to 'How do I track a song?', '#', rel: "popover", :"data-title" => "How do I track a song?", :"data-content" => render(:partial => 'shared/how_do_I_track_a_song'), class: "popoverhiw" %>
+      </p>
+      <%= render 'shared/track_form' %>
+    </div>
+  </div>
+  <div class="span8">
+    <%= render 'artist_table' %>
+  </div>
 </div>
 <div class="row">
-  <div class="span12 trackinterests well drop-shadow">
-     <h3>Songs (<%= @user.tracks.count %>)</h3>
-    	<% if @user.tracks.any? %>
-      <table class="table trackintereststable">
-        <tr>
-          <td class="track">
-            <h3>Artist</h3>
-          </td>
-          <td class="track">
-            <h3>Track</h3>
-          </td>
-          <td class="miropost">
-            <h3>Posted</h3>
-          </td>
-          <td class="miropost">
-            <h3>Availability</h3>
-          </td>
-          <td class="miropost">
-            <h3>Who else is tracking this?</h3>
-          </td>
-        </tr>
-        <tr><%= render :partial => 'track_interest', :collection => @track_interests, :as => :track_interest %></tr>
-      </table>
-      <%= will_paginate @track_interests %>
-    <% end %>
+  <div class="span12">
+    <%=  render 'track_table' %>
   </div>
 </div>

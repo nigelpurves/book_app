@@ -1,43 +1,14 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4 well drop-shadow">
-    <section class="userinfo">
-      <%= render 'shared/user_info' %>
-    </section>
+  <aside class="span5">
+    <%= render 'shared/user_info' %>
   </aside>
-	<div class="span6 offset1 artistinterests well drop-shadow">
-		<h3>Artists (<%= @user.interests.where(type: ArtistInterest).count %>)</h3>
-		<br />
-		<table class="table artistintereststable">
-			<tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
-		</table>
-	</div>
+  <div class="span7">
+    <%= render 'users/interests/artist_table' %>
+  </div>
 </div>
 <div class="row">
-	<div class="span12 trackinterests well drop-shadow">
-		<% if @user.tracks.any? %>
-			<h3>Tracks (<%= @user.tracks.count %>)</h3>
-	    <table class="table trackintereststable">
-				<tr>
-					<td class="track">
-						<h3>Artist</h3>
-					</td>
-					<td class="track">
-						<h3>Track</h3>
-					</td>
-					<td class="miropost">
-						<h3>Posted</h3>
-					</td>
-					<td class="miropost">
-						<h3>Availability</h3>
-					</td>
-					<td class="miropost">
-						<h3>Who else is tracking this?</h3>
-					</td>
-				</tr>
-				<tr><%= render :partial => 'users/interests/track_interest', :collection => @track_interests, :as => :track_interest %></tr>
-	    </table>
-		<%= will_paginate @track_interests %>
-	  <% end %>
-	</div>
+  <div class="span12">
+    <%= render 'users/interests/track_table' %>
+  </div>
 </div>

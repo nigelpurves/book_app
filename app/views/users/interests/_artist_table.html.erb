@@ -1,0 +1,29 @@
+<div class="artistinterests well drop-shadow">
+  <h3>Artists (<%= @user.interests.where(type: ArtistInterest).count %>)</h3>
+  <br/>
+  <table class="table artistintereststable">
+    <tr><%= render :partial => 'users/interests/artist_interest', :collection => @artist_interests, :as => :artist_interest %></tr>
+  </table>
+  <% if @user == current_user %>
+    <% if @user.skusername.nil? || @user.skusername.empty? %>
+      <div class="pre_skusername">
+        <span>
+          To track artists from
+        </span>
+        <span class="inline">
+          <%= image_tag('NP_SK_com_pink_small_v1.png') %>
+        </span>
+        <%= link_to "tell us your Songkick username", edit_user_path(current_user) %>
+      </div>
+    <% else %>
+      <div>
+        <div class="inline pull-left skbutton">
+          <%= button_to "Track artists from", create_with_songkick_user_interests_path(@user.to_param), :method => :post, :class => "btn btn-large" %>
+        </div>
+          <span class="inline sklogo">
+            <%= image_tag('NP_SK_com_pink_small_v1.png') %>
+          </span>
+      </div>
+    <% end %>
+  <% end %>
+</div>

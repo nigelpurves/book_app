@@ -1,0 +1,28 @@
+<div class="trackinterests well drop-shadow">
+  <h3>Songs (<%= @user.tracks.count %>)</h3>
+  <% if @user.tracks.any? %>
+    <table class="table trackintereststable">
+      <tr>
+        <td class="track">
+          <h3>Artist</h3>
+        </td>
+        <td class="track">
+          <h3>Track</h3>
+        </td>
+        <td class="miropost">
+          <h3>Posted</h3>
+        </td>
+        <td class="miropost">
+          <h3>Availability</h3>
+        </td>
+        <td class="miropost">
+          <h3>Who else is tracking this?</h3>
+        </td>
+      </tr>
+      <tr>
+        <%= render :partial => 'users/interests/track_interest', :collection => @track_interests, :as => :track_interest %>
+      </tr>
+    </table>
+    <%= will_paginate @track_interests %>
+  <% end %>
+</div>

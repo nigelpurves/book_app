@@ -4,17 +4,16 @@
   <td><%= time_ago_in_words(track_interest.created_at) %></td>
   <td class="track">
     <span class="itunes">
-			<% if track_interest.itunes_link.present? && track_interest.spotify_link.present? %>
-				Available on <%= itunes_link(track_interest) %> & <%= spotify_link(track_interest) %>.
-			<% elsif track_interest.itunes_link.present? %>
-				Available on <%= itunes_link(track_interest) %> & tracked on Spotify.
-			<% elsif track_interest.spotify_link.present? %>
-				Available on <%= spotify_link(track_interest) %> & tracked on iTunes.
-			<% else %>
-				We'll tell you as soon as it's out!
-			<% end %>
-		</span>
-
+      <% if track_interest.itunes_link.present? && track_interest.spotify_link.present? %>
+        Available on <%= itunes_link(track_interest) %> & <%= spotify_link(track_interest) %>.
+      <% elsif track_interest.itunes_link.present? %>
+        Available on <%= itunes_link(track_interest) %> & tracked on Spotify.
+      <% elsif track_interest.spotify_link.present? %>
+        Available on <%= spotify_link(track_interest) %> & tracked on iTunes.
+      <% else %>
+        We'll tell you as soon as it's out!
+      <% end %>
+    </span>
   </td>
   <td>
     <% if track_interest.is_last_interest? %>
