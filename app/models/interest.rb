@@ -42,11 +42,6 @@ class Interest < ActiveRecord::Base
     end
   end
 
-#  def save_sk_tracked_artists
-#    @user.sk_tracked_artists.each do |k|
-#      self.build_interest(nil, k)
-#    end
-#  end
 end# == Schema Information
 #
 # Table name: interests
