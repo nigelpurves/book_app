@@ -4,7 +4,9 @@ class SongkickImporter
 
   def initialize(songkick_username, api_key = nil)
     @username = songkick_username
-    @api_key = api_key || Songkick::API_KEY
+    api_key = api_key || Songkick::API_KEY
+    @remote = Songkickr::Remote.new api_key
+    @artists = []
   end
 
   def insert_tracked_artists_for_user(user)
@@ -20,17 +22,20 @@ class SongkickImporter
     interests
   end
 
-  def sk_tracked_artists
-    sk_tracked_artist_info.map(&:display_name)
-  end
 
-  def sk_tracked_artist_info
-    remote = Songkickr::Remote.new @api_key
-    sk_info = []
-    (1..100).each do |p|
-      sk_info << remote.users_tracked_artists(@username, page: p).results
-    end
-    sk_info.compact.flatten
+  def sk_tracked_artists
+    return @artists unless @artists.empty?
+
+    page = 0
+
+    begin
+      page = page + 1
+      res = @remote.users_tracked_artists(@username, page: page)
+      @artists << res.results.map(&:display_name)
+    end while !res.results.empty?
+
+    @artists.compact!
+    @artists.flatten!
   end
 
 end

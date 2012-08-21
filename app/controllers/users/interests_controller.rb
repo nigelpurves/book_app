@@ -25,9 +25,18 @@ class Users::InterestsController < ApplicationController
     if current_user.skusername.nil? || current_user.skusername.empty?
       redirect_to edit_user_path(current_user)
     else
-      importer = SongkickImporter.new(current_user.skusername)
-      interests = importer.insert_tracked_artists_for_user(current_user)
-      flash[:success] = "Got #{interests.size} artists from the SongKick user #{current_user.skusername}"
+
+      begin
+        importer = SongkickImporter.new(current_user.skusername)
+        interests = importer.insert_tracked_artists_for_user(current_user)
+        flash[:success] = "Got #{interests.size} artists from the SongKick user #{current_user.skusername}"
+      rescue ResourceNotFound
+        flash[:error] = "Sorry, unknown SongKick user #{current_user.skusername}"
+      rescue APIError
+        Rails.logger.error(APIError)
+        flash[:error] = "ZOMG! There was a weird error with the SongKick API. Please try again later."
+      end
+
       redirect_to user_interests_path(current_user)
     end
   end

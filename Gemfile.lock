@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/nigelpurves/songkickr
-  revision: 361230ac1273b2684c8a893e90c6f66e00f20906
+  revision: 3fecd1b25f84a96e53afbef5e7426e6f91617d77
   specs:
     songkickr (0.2.2)
       songkickr

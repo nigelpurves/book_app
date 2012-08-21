@@ -103,35 +103,25 @@ describe "UserInterestsPages" do
     end
 
     describe "of artist interests by linking with Songkick" do
-      
-      describe "should be successful" do  
+
+      describe "should be successful" do
         use_vcr_cassette('sk/nigelpurves')
-        
+
         it "if the username is valid" do
           expect { click_button "Track artists from" }.to change(Interest, :count).by(596)
         end
       end
-      
+
       describe "should not produce an error if the username is empty" do
         let(:user) { FactoryGirl.create(:user, :skusername => '') }
-        
+
         it { should_not have_button('Track artists from') }
         it { should have_link('tell us your Songkick username') }
 
       end
-      
-      describe "should not produce an error if the username is invalid" do
-        let(:user) { FactoryGirl.create(:user, :skusername => 'fgfgfgfgfgfgfgfgfgfgfgfgfgfg') }
-        
-        it do
-          expect do
-            VCR.use_cassette('sk/invalid', :record => :new_episodes) do
-              click_button 'Track artists from'
-            end
-          end.should_not raise_error
-        end
-      end
-      
+
+
+
     end
   end
 end

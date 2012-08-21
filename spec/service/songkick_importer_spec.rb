@@ -30,4 +30,15 @@ describe SongkickImporter do
 
   end
 
+  describe "importing from an invalid username" do
+    use_vcr_cassette("sk/invalid")
+
+    it "should raise a ResourceNotFound" do
+      invalid = SongkickImporter.new 'fgfgfgfgfgfgfgfgfgfgfgfgfgfg'
+
+      expect { invalid.insert_tracked_artists_for_user(user) }.to raise_error(ResourceNotFound)
+    end
+
+  end
+
 end
