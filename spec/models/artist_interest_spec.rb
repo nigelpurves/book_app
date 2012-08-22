@@ -2,46 +2,63 @@ require 'spec_helper'
 
 describe ArtistInterest do
 
-  let!(:user) { FactoryGirl.create(:user) }
-  let!(:artist) { FactoryGirl.create(:artist, name: "The xx") }
-  let!(:track) { FactoryGirl.create(:track, artist: artist, discovered_at: 1.hour.ago) }
-  let!(:artist_interest) { FactoryGirl.create(:artist_interest, user: user, artist: artist, last_notified_at: 48.hours.ago) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:other_user) { FactoryGirl.create(:user) }
+  let(:artist) { FactoryGirl.create(:artist, name: "The xx") }
+  let(:other_artist) { FactoryGirl.create(:artist, name: "Engelbert Humperdinck") }
 
-#  before(:all) do
-#    artist
-#    track
-#    artist_interest
-#  end
+  describe ArtistInterest do
 
-  subject { artist_interest }
+    describe "notifying users" do
 
-  describe "an artist interest" do
+      before(:each) do
+        track                  = FactoryGirl.create(:track, artist: artist, discovered_at: 1.hour.ago)
+        old_track              = FactoryGirl.create(:track, artist: artist, discovered_at: 1.month.ago)
+        other_track            = FactoryGirl.create(:track, artist: other_artist, discovered_at: 1.year.ago)
+        @artist_interest       = FactoryGirl.create(:artist_interest, user: user, artist: artist, last_notified_at: 48.hours.ago)
+        @other_artist_interest = FactoryGirl.create(:artist_interest, user: other_user, artist: other_artist, last_notified_at: 48.hours.ago)
+      end
 
-    it "should return new tracks" do
-      artist_interest.get_new_tracks.should_not be_empty
+      describe "with new tracks" do
+
+        it "should return new tracks" do
+          @artist_interest.get_new_tracks.size.should == 1
+        end
+
+        it "should notify all relevant users" do
+          expect do
+            ArtistInterest.notify_all_users
+          end.to change(ActionMailer::Base.deliveries, :count).by(1)
+        end
+
+        it "should not return older tracks or other other tracks" do
+          @other_artist_interest.get_new_tracks.should be_empty
+        end
+
+      end
+
+
     end
 
-    it "should notify all relevant users" do
-      expect do
-        ArtistInterest.notify_all_users
-      end.to change(ActionMailer::Base.deliveries, :count).by(1)
-    end
+    describe "being created" do
 
-    it "should set the notification date before creation" do
-      ai = Factory.build(:artist_interest, user: user, artist: artist)
+      it "should set the notification date" do
+        ai = Factory.build(:artist_interest, user: user, artist: artist)
 
-      ai.last_notified_at.should be_nil
-      ai.save
-      ai.last_notified_at.should_not be_nil
-    end
+        ai.last_notified_at.should be_nil
+        ai.save
+        ai.last_notified_at.should_not be_nil
+      end
 
-    it "should not update the notification date if already given" do
-      time = 48.hours.ago
-      ai = Factory.build(:artist_interest, user: user, artist: artist, last_notified_at: time)
+      it "should not update the notification date if already given" do
+        time = 48.hours.ago
+        ai   = Factory.build(:artist_interest, user: user, artist: artist, last_notified_at: time)
 
-      ai.last_notified_at.should == time
-      ai.save
-      ai.last_notified_at.should == time
+        ai.last_notified_at.should == time
+        ai.save
+        ai.last_notified_at.should == time
+      end
+
     end
 
   end

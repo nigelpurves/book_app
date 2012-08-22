@@ -1,7 +1,7 @@
-Great news, <%= @interest.artist.name %> have released some new tunes:
+Great news, <%= @interest.artist.name %> have released some new tunes on Spotify:
 
 <%= @new_tracks.each do |track| %>
-			<%= track.name %> - <%= raw track.spotify_link %>
+  <%= track.name %> - <%= raw track.spotify_link %>
 <% end %>
 
 Happy tracking!

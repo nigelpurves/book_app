@@ -18,8 +18,11 @@ class ArtistInterest < Interest
   end
 
   def notify_user!
-    UserMailer.artist_new_release(self).deliver
-    self.update_attribute(:last_notified_at, Time.now)
+    new_tracks = get_new_tracks
+    unless new_tracks.empty?
+      UserMailer.artist_new_release(self, new_tracks).deliver
+      self.update_attribute(:last_notified_at, Time.now)
+    end
   end
 
   def self.notify_all_users
