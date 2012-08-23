@@ -16,7 +16,7 @@ end
 every 24.hours do
   #command "/usr/bin/some_great_command"
   runner "Artist.update_catalogue"
-  runner "ArtistInterest.notify_all_users"
+#  runner "ArtistInterest.notify_all_users"
   #rake "some:great:rake:task"
 end
 
